@@ -1,4 +1,4 @@
-// Copyright (c) 2017 Uber Technologies, Inc.
+// Copyright (c) 2018 Uber Technologies, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,25 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { reducer as formReducer } from 'redux-form';
+import memoizeOne from 'memoize-one';
+import { matchPath } from 'react-router-dom';
 
-import config from './config';
-import dependencies from './dependencies';
-import ddg from './ddg';
-import pathAgnosticDecorations from './path-agnostic-decorations';
-import embedded from './embedded';
-import services from './services';
-import trace from './trace';
-import nodes from './nodes';
+import prefixUrl from '../../utils/prefix-url';
 
-export default {
-  config,
-  dependencies,
-  ddg,
-  embedded,
-  pathAgnosticDecorations,
-  services,
-  trace,
-  nodes,
-  form: formReducer,
-};
+export const ROUTE_PATH = prefixUrl('/nodes');
+
+const ROUTE_MATCHER = { path: ROUTE_PATH, strict: true, exact: true };
+
+export function matches(path: string) {
+  return Boolean(matchPath(path, ROUTE_MATCHER));
+}
+
+export function getUrl() {
+  return prefixUrl('/nodes');
+  // searchのは検索の設定用引数
+}

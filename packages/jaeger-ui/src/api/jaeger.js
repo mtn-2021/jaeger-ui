@@ -112,6 +112,9 @@ const JaegerAPI = {
   searchTraces(query) {
     return getJSON(`${this.apiRoot}traces`, { query });
   },
+  fetchNodes() {
+    return getJSON(`${this.apiRoot}nodes`);
+  },
 };
 
 export default JaegerAPI;

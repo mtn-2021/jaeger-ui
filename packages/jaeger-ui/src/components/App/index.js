@@ -25,6 +25,8 @@ import { ROUTE_PATH as dependenciesPath } from '../DependencyGraph/url';
 import DeepDependencies from '../DeepDependencies';
 import { ROUTE_PATH as deepDependenciesPath } from '../DeepDependencies/url';
 import QualityMetrics from '../QualityMetrics';
+import { ROUTE_PATH as nodeDisplayPath } from '../NodeDisplay/url';
+import NodeDisplay from '../NodeDisplay';
 import { ROUTE_PATH as qualityMetricsPath } from '../QualityMetrics/url';
 import SearchTracePage from '../SearchTracePage';
 import { ROUTE_PATH as searchPath } from '../SearchTracePage/url';
@@ -63,6 +65,7 @@ export default class JaegerUIApp extends Component {
               <Route path={dependenciesPath} component={DependencyGraph} />
               <Route path={deepDependenciesPath} component={DeepDependencies} />
               <Route path={qualityMetricsPath} component={QualityMetrics} />
+              <Route path={nodeDisplayPath} component={NodeDisplay} />
 
               <Redirect exact path="/" to={searchPath} />
               <Redirect exact path={prefixUrl()} to={searchPath} />

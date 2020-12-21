@@ -66,6 +66,11 @@ export type ReduxState = {
       query?: SearchQuery;
     };
   };
+  nodes: {
+    nodes: (string[]) | TNil;
+    loading: boolean;
+    error: ApiError | TNil;
+  };
   traceDiff: TTraceDiffState;
   traceTimeline: TTraceTimeline;
 };

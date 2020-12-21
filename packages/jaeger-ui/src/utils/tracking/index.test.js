@@ -19,10 +19,10 @@ jest.mock('./conv-raven-to-ga', () => () => ({
   message: 'jaeger/a',
 }));
 
-jest.mock('./index', () => {
-  process.env.REACT_APP_VSN_STATE = '{}';
-  return require.requireActual('./index');
-});
+// jest.mock('./index', () => {
+//   process.env.REACT_APP_VSN_STATE = '{}';
+//   return require.requireActual('./index');
+// });
 
 import ReactGA from 'react-ga';
 

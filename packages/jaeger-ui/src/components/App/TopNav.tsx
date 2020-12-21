@@ -23,6 +23,7 @@ import * as dependencyGraph from '../DependencyGraph/url';
 import * as deepDependencies from '../DeepDependencies/url';
 import * as qualityMetrics from '../QualityMetrics/url';
 import * as searchUrl from '../SearchTracePage/url';
+import * as nodeUrl from '../NodeDisplay/url';
 import * as diffUrl from '../TraceDiff/url';
 import { ReduxState } from '../../types';
 import { ConfigMenuItem, ConfigMenuGroup } from '../../types/config';
@@ -42,8 +43,12 @@ const NAV_LINKS = [
     matches: diffUrl.matches,
     text: 'Compare',
   },
+  {
+    to: nodeUrl.getUrl(),
+    matches: nodeUrl.matches,
+    text: 'Nodes',
+  },
 ];
-
 if (getConfigValue('dependencies.menuEnabled')) {
   NAV_LINKS.push({
     to: dependencyGraph.getUrl(),
