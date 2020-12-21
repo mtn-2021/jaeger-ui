@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import memoizeOne from 'memoize-one';
 import { matchPath } from 'react-router-dom';
 
 import prefixUrl from '../../utils/prefix-url';
