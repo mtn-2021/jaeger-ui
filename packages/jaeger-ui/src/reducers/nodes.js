@@ -18,6 +18,7 @@ import { fetchNodes } from '../actions/jaeger-api';
 
 const initialState = {
   nodes: null,
+  services: {},
   loading: false,
   error: null,
 };
@@ -27,9 +28,24 @@ function fetchStarted(state) {
 }
 
 function fetchNodesDone(state, { payload }) {
-  const nodes = payload.data || [];
-  nodes.sort(localeStringComparator);
-  return { ...state, nodes, error: null, loading: false };
+  const { data: nodes } = payload;
+
+  let nodeAddress = null;
+  let servicesOnNode = { ...state.services };
+  nodes.map(({ address, services }) => {
+    servicesOnNode = { servicesOnNode, [address]: services.sort(localeStringComparator) };
+    nodeAddress = { nodeAddress, address };
+    return null;
+  });
+  // for(let node of nodes){
+  //   const {address, services} = node
+  //   servicesOnNode = { servicesOnNode, [address]: services.sort(localeStringComparator)}
+  //     nodeAddress = {nodeAddress, address}
+  //   }
+  // nodeAddress = {nodeAddress, nodes.map(({ address, services }) => {
+  nodeAddress.sort(localeStringComparator);
+
+  return { ...state, nodes: nodeAddress, services: servicesOnNode, error: null, loading: false };
 }
 
 function fetchNodesErred(state, { payload: error }) {

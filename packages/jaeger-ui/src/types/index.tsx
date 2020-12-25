@@ -68,6 +68,7 @@ export type ReduxState = {
   };
   nodes: {
     nodes: (string[]) | TNil;
+    services: Record<string, string[]>;
     loading: boolean;
     error: ApiError | TNil;
   };
