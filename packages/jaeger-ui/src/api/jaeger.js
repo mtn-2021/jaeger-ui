@@ -115,6 +115,9 @@ const JaegerAPI = {
   fetchNodes() {
     return getJSON(`${this.apiRoot}nodes`);
   },
+  fetchRequestToNode(query) {
+    return getJSON(`${this.apiRoot}nodes/detail`, { query });
+  },
 };
 
 export default JaegerAPI;

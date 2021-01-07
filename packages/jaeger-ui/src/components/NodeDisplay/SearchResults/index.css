@@ -14,10 +14,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-.NodeForm--labelCount {
-  color: #999;
+.SearchResults {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
-
-.NodeForm--columnWhile {
-  padding-right: 3rem;
-}
+/*.SearchResults--disKeys {*/
+/*    margin-bottom: 1.25rem;*/
+/*}*/

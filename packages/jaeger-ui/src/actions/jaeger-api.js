@@ -61,6 +61,12 @@ export const fetchDeepDependencyGraph = createAction(
 
 export const fetchNodes = createAction('@JAEGER_API/FETCH_NODES', () => JaegerAPI.fetchNodes());
 
+export const fetchRequestToNode = createAction(
+  '@JAEGER_API/FETCH_NODE_DETAIL',
+  query => JaegerAPI.fetchRequestToNode(query),
+  query => ({ query })
+);
+
 export const fetchDependencies = createAction('@JAEGER_API/FETCH_DEPENDENCIES', () =>
   JaegerAPI.fetchDependencies()
 );
