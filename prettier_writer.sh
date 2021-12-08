@@ -1,0 +1,1 @@
+prettier --write 'packages/jaeger-ui/src/**/*.{css,tsx,js}'

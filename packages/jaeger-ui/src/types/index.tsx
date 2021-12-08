@@ -40,6 +40,24 @@ export type FetchedTrace = {
   state?: FetchedState;
 };
 
+export type RequestToNode = {
+  operationName: string;
+  startTime: number;
+  responseTime: number;
+  failed: number;
+};
+
+export type StatusOfNode = {
+  timestamps: number[];
+  status: Record<
+    number,
+    {
+      operationName: string;
+      status: Record<string, string>;
+    }
+  >;
+};
+
 export type ReduxState = {
   archive: TracesArchive;
   config: Config;
@@ -67,6 +85,19 @@ export type ReduxState = {
       results: string[];
       state?: FetchedState;
       query?: SearchQuery;
+    };
+  };
+  nodes: {
+    nodes: (string[]) | TNil;
+    services: Record<string, string[]>;
+    loading: boolean;
+    error: ApiError | TNil;
+    search: {
+      request: RequestToNode[];
+      status: StatusOfNode;
+      query?: Record<string, string>;
+      state?: FetchedState;
+      error?: ApiError;
     };
   };
   traceDiff: TTraceDiffState;

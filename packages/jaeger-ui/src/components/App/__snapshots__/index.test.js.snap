@@ -63,6 +63,7 @@ exports[`JaegerUIApp does not explode 1`] = `
         <Route
           component={[Function]}
           path="/monitor"
+          path="/nodes"
         />
         <Redirect
           exact={true}

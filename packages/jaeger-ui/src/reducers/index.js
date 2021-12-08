@@ -22,6 +22,7 @@ import embedded from './embedded';
 import services from './services';
 import metrics from './metrics';
 import trace from './trace';
+import nodes from './nodes';
 
 export default {
   config,
@@ -32,5 +33,6 @@ export default {
   services,
   metrics,
   trace,
+  nodes,
   form: formReducer,
 };

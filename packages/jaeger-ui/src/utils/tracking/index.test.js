@@ -46,7 +46,9 @@ jest.mock('./noopWebAnalytics', () => ({
   },
 }));
 
+
 describe('generic analytics tracking', () => {
+
   beforeEach(() => {
     jest.resetModules();
     jest.resetAllMocks();

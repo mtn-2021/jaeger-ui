@@ -122,7 +122,13 @@ const JaegerAPI = {
 
     return getJSON(`${this.apiRoot}metrics/${metricType}`, {
       query: `${servicesName}&${queryString.stringify(query)}`,
-    }).then(d => ({ ...d, quantile: query.quantile }));
+    }).then(d => ({...d, quantile: query.quantile}));
+  },
+  fetchNodes() {
+    return getJSON(`${this.apiRoot}nodes`);
+  },
+  fetchRequestToNode(query) {
+    return getJSON(`${this.apiRoot}nodes/detail`, { query });
   },
 };
 
