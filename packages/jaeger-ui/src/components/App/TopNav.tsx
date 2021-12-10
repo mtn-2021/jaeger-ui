@@ -116,7 +116,6 @@ export function TopNavImpl(props: Props) {
   const { config, router } = props;
   const { pathname } = router.location;
   const menuItems = Array.isArray(config.menu) ? config.menu : [];
-  console.log(NAV_LINKS);
 
   return (
     <div>
