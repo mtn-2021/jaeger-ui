@@ -139,7 +139,13 @@ export function TopNavImpl(props: Props) {
         <Menu.Item>
           <Link to={prefixUrl('/')} style={{ fontSize: '14px', fontWeight: 500 }}>
             JAEGER UI
-            {NAV_LINKS}
+            {NAV_LINKS.map(({ matches, to, text }) => {
+              const url = typeof to === 'string' ? to : to(props);
+              const key = matches(pathname) ? pathname : url;
+              return (
+                  <p>{url} {text} {key}</p>
+              );
+            })}
           </Link>
         </Menu.Item>
         {NAV_LINKS.map(({ matches, to, text }) => {
