@@ -117,6 +117,7 @@ export function TopNavImpl(props: Props) {
   const { pathname } = router.location;
   const menuItems = Array.isArray(config.menu) ? config.menu : [];
 
+
   return (
     <div>
       <Menu theme="dark" mode="horizontal" selectable={false} className="ub-right" selectedKeys={[pathname]}>
@@ -138,6 +139,7 @@ export function TopNavImpl(props: Props) {
         <Menu.Item>
           <Link to={prefixUrl('/')} style={{ fontSize: '14px', fontWeight: 500 }}>
             JAEGER UI
+            {NAV_LINKS}
           </Link>
         </Menu.Item>
         {NAV_LINKS.map(({ matches, to, text }) => {
