@@ -116,7 +116,7 @@ export function TopNavImpl(props: Props) {
   const { config, router } = props;
   const { pathname } = router.location;
   const menuItems = Array.isArray(config.menu) ? config.menu : [];
-
+  console.log(NAV_LINKS);
 
   return (
     <div>
@@ -141,13 +141,6 @@ export function TopNavImpl(props: Props) {
             JAEGER UI
           </Link>
         </Menu.Item>
-        {NAV_LINKS.map(({ matches, to, text }) => {
-          const url = typeof to === 'string' ? to : to(props);
-          const key = matches(pathname) ? pathname : url;
-          return (
-              <p>{url} {text} {key}</p>
-          );
-        })}
         {NAV_LINKS.map(({ matches, to, text }) => {
           const url = typeof to === 'string' ? to : to(props);
           const key = matches(pathname) ? pathname : url;
