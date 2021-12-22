@@ -137,10 +137,10 @@ NodeDisplayImpl.propTypes = {
   }),
   fetchNodes: PropTypes.func,
   // fetchNodeDetail: PropTypes.func,
-  errors: PropTypes.arrayOf(
-    PropTypes.shape({
-      message: PropTypes.string,
-    })
+  // errors: PropTypes.arrayOf(
+  //   PropTypes.shape({
+  //     message: PropTypes.string,
+  //   })
   ),
 };
 
