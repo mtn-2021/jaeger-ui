@@ -141,7 +141,7 @@ NodeDisplayImpl.propTypes = {
   //   PropTypes.shape({
   //     message: PropTypes.string,
   //   })
-  ),
+  //),
 };
 
 const stateNodesXformer = memoizeOne(stateNodes => {
