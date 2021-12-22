@@ -25,7 +25,7 @@ import NodeForm from './NodeForm';
 import SearchResults from './SearchResults';
 import * as jaegerApiActions from '../../actions/jaeger-api';
 import LoadingIndicator from '../common/LoadingIndicator';
-import ErrorMessage from '../common/ErrorMessage';
+// import ErrorMessage from '../common/ErrorMessage';
 import { getUrlState } from '../SearchTracePage/url';
 
 import './index.css';
@@ -41,7 +41,7 @@ export class NodeDisplayImpl extends Component {
     const {
       nodeList,
       loadingNodes,
-      errors,
+      // errors,
       tableData,
       request,
       status,
