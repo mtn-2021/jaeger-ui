@@ -62,9 +62,9 @@ export class NodeDisplayImpl extends Component {
           {showError && (
             <div className="js-test-error-message">
               <h2>There was an error querying for nodes:</h2>
-              {/*{errors.map(err => (*/}
-              {/*  <ErrorMessage key={err.message} error={err} />*/}
-              {/*))}*/}
+              {/* {errors.map(err => ( */}
+              {/*  <ErrorMessage key={err.message} error={err} /> */}
+              {/* ))} */}
             </div>
           )}
           {!showError && (
