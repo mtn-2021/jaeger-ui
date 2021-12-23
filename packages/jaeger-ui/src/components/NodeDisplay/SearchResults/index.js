@@ -178,10 +178,10 @@ SearchResultImpl.propTypes = {
   statusKeys: PropTypes.arrayOf(PropTypes.string),
 };
 SearchResultImpl.defaultProps = {
-  lookback: null,
-  start: null,
-  request: [],
-  status: [],
+  // lookback: null,
+  // start: null,
+  // request: [],
+  // status: [],
   tableData: [],
   loading: false,
   statusKeys: [],
