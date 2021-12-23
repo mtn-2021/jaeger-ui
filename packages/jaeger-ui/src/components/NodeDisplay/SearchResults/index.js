@@ -15,7 +15,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { Menu, Table } from 'antd';
-// import ResultGraph from './ResultGraph';
+import ResultGraph from './ResultGraph';
 
 import LoadingIndicator from '../../common/LoadingIndicator';
 import './index.css';
@@ -43,8 +43,7 @@ export class SearchResultImpl extends React.PureComponent {
   };
 
   render() {
-    const { // start, lookback, request, status,
-       tableData, loading, statusKeys } = this.props;
+    const { start, lookback, request, status, tableData, loading, statusKeys } = this.props;
     const { selectedKey, selectedMenu } = this.state;
 
     const columns = [
@@ -150,15 +149,15 @@ export class SearchResultImpl extends React.PureComponent {
         </div>
 
         <div className="SearchResults--graph">
-          {/* <ResultGraph */}
-          {/*  request={request} */}
-          {/*  status={status} */}
-          {/*  start={start} */}
-          {/*  lookback={lookback} */}
-          {/*  operationNames={tableData.operations} */}
-          {/*  statusKey={selectedKey} */}
-          {/*  graphMenu={selectedMenu} */}
-          {/* /> */}
+          <ResultGraph
+            request={request}
+            status={status}
+            start={start}
+            lookback={lookback}
+            operationNames={tableData.operations}
+            statusKey={selectedKey}
+            graphMenu={selectedMenu}
+          />
         </div>
         <div className="SearchResults--tables">
           <Table columns={columns} dataSource={data} />
@@ -169,19 +168,19 @@ export class SearchResultImpl extends React.PureComponent {
 }
 
 SearchResultImpl.propTypes = {
-  // lookback: PropTypes.string,
-  // start: PropTypes.number,
-  // request: PropTypes.arrayOf(PropTypes.string),
-  // status: PropTypes.arrayOf(PropTypes.string),
+  lookback: PropTypes.string,
+  start: PropTypes.number,
+  request: PropTypes.arrayOf(PropTypes.string),
+  status: PropTypes.arrayOf(PropTypes.string),
   tableData: PropTypes.arrayOf(PropTypes.string),
   loading: PropTypes.bool,
   statusKeys: PropTypes.arrayOf(PropTypes.string),
 };
 SearchResultImpl.defaultProps = {
-  // lookback: null,
-  // start: null,
-  // request: [],
-  // status: [],
+  lookback: null,
+  start: null,
+  request: [],
+  status: [],
   tableData: [],
   loading: false,
   statusKeys: [],
