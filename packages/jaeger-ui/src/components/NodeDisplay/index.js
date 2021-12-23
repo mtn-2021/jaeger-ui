@@ -25,7 +25,7 @@ import NodeForm from './NodeForm';
 import SearchResults from './SearchResults';
 import * as jaegerApiActions from '../../actions/jaeger-api';
 import LoadingIndicator from '../common/LoadingIndicator';
-// import ErrorMessage from '../common/ErrorMessage';
+import ErrorMessage from '../common/ErrorMessage';
 import { getUrlState } from '../SearchTracePage/url';
 
 import './index.css';
@@ -41,7 +41,7 @@ export class NodeDisplayImpl extends Component {
     const {
       nodeList,
       loadingNodes,
-      // errors,
+      errors,
       tableData,
       request,
       status,
@@ -50,7 +50,7 @@ export class NodeDisplayImpl extends Component {
       start,
       statusKeys,
     } = this.props;
-    const showError = true; // errors && !loadingDetail;
+    const showError = errors && !loadingDetail;
     return (
       <Row className="NodeDisplay--row">
         <Col span={6} className="NodeDisplay--column">
@@ -62,9 +62,9 @@ export class NodeDisplayImpl extends Component {
           {showError && (
             <div className="js-test-error-message">
               <h2>There was an error querying for nodes:</h2>
-              {/* {errors.map(err => ( */}
-              {/*  <ErrorMessage key={err.message} error={err} /> */}
-              {/* ))} */}
+              {errors.map(err => (
+                <ErrorMessage key={err.message} error={err} />
+              ))}
             </div>
           )}
           {!showError && (
@@ -137,11 +137,11 @@ NodeDisplayImpl.propTypes = {
   }),
   fetchNodes: PropTypes.func,
   // fetchNodeDetail: PropTypes.func,
-  // errors: PropTypes.arrayOf(
-  //   PropTypes.shape({
-  //     message: PropTypes.string,
-  //   })
-  // ),
+  errors: PropTypes.arrayOf(
+    PropTypes.shape({
+      message: PropTypes.string,
+    })
+  ),
 };
 
 const stateNodesXformer = memoizeOne(stateNodes => {
