@@ -169,10 +169,10 @@ export class SearchResultImpl extends React.PureComponent {
 }
 
 SearchResultImpl.propTypes = {
-  lookback: PropTypes.string,
-  start: PropTypes.number,
-  request: PropTypes.arrayOf(PropTypes.string),
-  status: PropTypes.arrayOf(PropTypes.string),
+  // lookback: PropTypes.string,
+  // start: PropTypes.number,
+  // request: PropTypes.arrayOf(PropTypes.string),
+  // status: PropTypes.arrayOf(PropTypes.string),
   tableData: PropTypes.arrayOf(PropTypes.string),
   loading: PropTypes.bool,
   statusKeys: PropTypes.arrayOf(PropTypes.string),
