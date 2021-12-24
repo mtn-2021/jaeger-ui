@@ -256,6 +256,7 @@ function ResultGraphImpl(props) {
     maxDataB = 10;
     maxDataS = 1;
   }
+  console.log("after if");
 
   const graphData = {
     labels,
@@ -330,7 +331,7 @@ function ResultGraphImpl(props) {
       ],
     },
   };
-
+  console.log("after graph");
   return (
     <div className="App">
       <Bar data={graphData} options={graphOption} />
