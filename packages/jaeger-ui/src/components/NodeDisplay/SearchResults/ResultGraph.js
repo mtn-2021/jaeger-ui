@@ -15,9 +15,9 @@
 import React from 'react';
 import dimensions from 'react-dimensions';
 import { Bar } from 'react-chartjs-2';
-import moment from 'moment';
+// import moment from 'moment';
 // import PropTypes from 'prop-types';
-import { ONE_MILLISECOND } from '../../../utils/date';
+// import { ONE_MILLISECOND } from '../../../utils/date';
 
 function getUintTime(time) {
   const unit = time.substr(-1);
