@@ -214,7 +214,7 @@ function getStatusPlot(status, yPlop) {
   return { datasets, maxData };
 }
 
-function ResultGraphImpl(props) {
+const ResultGraph = function ResultGraphImpl(props) {
   const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
   let lookback;
   let labels;
@@ -356,7 +356,5 @@ ResultGraphImpl.defaultProps = {
   graphMenu: null,
 };
 
-const ResultGraph = (ResultGraphImpl);
-
-export { ResultGraphImpl };
+export { ResultGraph };
 export default dimensions()(ResultGraph);
