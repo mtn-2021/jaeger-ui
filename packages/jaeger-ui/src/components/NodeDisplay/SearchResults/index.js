@@ -150,14 +150,14 @@ export class SearchResultImpl extends React.PureComponent {
         </div>
 
         <div className="SearchResults--graph">
-          {/* <ResultGraph*/}
-          {/*  request={request}*/}
-          {/*  status={status}*/}
-          {/*  start={start}*/}
-          {/*  lookback={lookback}*/}
-          {/*  operationNames={tableData.operations}*/}
-          {/*  statusKey={selectedKey}*/}
-          {/*  graphMenu={selectedMenu}*/}
+          {/* <ResultGraph */}
+          {/*  request={request} */}
+          {/*  status={status} */}
+          {/*  start={start} */}
+          {/*  lookback={lookback} */}
+          {/*  operationNames={tableData.operations} */}
+          {/*  statusKey={selectedKey} */}
+          {/*  graphMenu={selectedMenu} */}
           {/* />*/}
         </div>
         <div className="SearchResults--tables">
