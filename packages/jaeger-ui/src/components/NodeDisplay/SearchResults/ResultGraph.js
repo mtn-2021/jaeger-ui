@@ -245,9 +245,9 @@ function ResultGraphImpl(props) {
       operationNames,
       graphMenu
     );
-    const statusData = getStatusPlot(status, statusKey);
+    // const statusData = getStatusPlot(status, statusKey);
     labels = structure.labels;
-    datasets = [].concat(statusData.datasets).concat(structure.datasets);
+    datasets = []; // .concat(statusData.datasets).concat(structure.datasets);
     xLabel = 'Last 1 hour';
     intervalUnit = structure.interval;
     minData = 0;

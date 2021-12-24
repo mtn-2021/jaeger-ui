@@ -30,13 +30,13 @@ export class SearchResultImpl extends React.PureComponent {
     };
   }
 
-  useMenuSelect = e => {
+  handleMenuSelect = e => {
     this.setState({
       selectedMenu: e.key,
     });
   };
 
-  useSelect = e => {
+  handleSelect = e => {
     this.setState({
       selectedKey: e.key,
     });
@@ -133,14 +133,14 @@ export class SearchResultImpl extends React.PureComponent {
       <div className="SearchResults">
         <div className="SearchResult--display">
           <div className="SearchResults--disMenu">
-            <Menu onSelect={this.useMenuSelect} defaultSelectedKeys={selectedMenu} mode="horizontal">
+            <Menu onSelect={this.handleMenuSelect} defaultSelectedKeys={selectedMenu} mode="horizontal">
               <Menu.Item key="allRequest">Describe all request</Menu.Item>
               <Menu.Item key="successRequest">Pick up success request</Menu.Item>
               <Menu.Item key="failedRequest">Pick up failed request</Menu.Item>
             </Menu>
           </div>
           <div className="SearchResults--disKeys">
-            <Menu onSelect={this.useSelect} defaultSelectedKeys={selectedKey} mode="horizontal">
+            <Menu onSelect={this.handleSelect} defaultSelectedKeys={selectedKey} mode="horizontal">
               {statusKeys.map(key => {
                 return <Menu.Item key={key}>{key}</Menu.Item>;
               })}
