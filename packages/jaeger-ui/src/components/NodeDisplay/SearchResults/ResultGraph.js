@@ -224,7 +224,7 @@ function ResultGraphImpl(props) {
   let minData;
   let maxDataB;
   let maxDataS;
-  console.log(request);
+  console.log("before if");
   if ((status && status.length > 0) || (request && request.length > 0)) {
     lookback = lb;
     const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
@@ -238,6 +238,7 @@ function ResultGraphImpl(props) {
     maxDataS = statusData.maxData;
   } else {
     lookback = '1h';
+    console.log("before getData");
     const structure = getLabelsAndData(
       lookback,
       new Date() * 1000 - getUintTime(lookback),
@@ -245,9 +246,10 @@ function ResultGraphImpl(props) {
       operationNames,
       graphMenu
     );
-    // const statusData = getStatusPlot(status, statusKey);
+    console.log("before getPlot");
+    const statusData = getStatusPlot(status, statusKey);
     labels = structure.labels;
-    datasets = []; // .concat(statusData.datasets).concat(structure.datasets);
+    datasets = [].concat(statusData.datasets).concat(structure.datasets);
     xLabel = 'Last 1 hour';
     intervalUnit = structure.interval;
     minData = 0;
