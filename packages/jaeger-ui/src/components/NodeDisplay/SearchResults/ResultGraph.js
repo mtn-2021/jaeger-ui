@@ -384,7 +384,7 @@ function ResultGraphImpl(props) {
     },
   };
   console.log(graphData);
-  // console.log(graphOption);
+  console.log(graphOption);
   // return (<div> <p2>hello world!!</p2></div>);
   return (
      <div className="ResultGraph">
