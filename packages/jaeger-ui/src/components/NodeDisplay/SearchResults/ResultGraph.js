@@ -19,7 +19,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import { ONE_MILLISECOND } from '../../../utils/date';
 
-export function getUintTime(time) {
+function getUintTime(time) {
   const unit = time.substr(-1);
   const units = {
     m: 60,
@@ -43,7 +43,7 @@ const UnitKeeper = {
   d: { format: '~MM/DD', underUnit: 'h', half: '12h', full: 'day' },
 };
 
-export function getIntervalTime(lookback) {
+function getIntervalTime(lookback) {
   const unit = lookback.substr(-1);
   const vol = parseInt(lookback, 10);
   const interval = Math.floor(vol / 10);
@@ -82,7 +82,7 @@ export function getIntervalTime(lookback) {
   };
 }
 
-export function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
+function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
   const lookbackTime = getUintTime(lookback);
   const interval = getIntervalTime(lookback);
   const format = UnitKeeper[interval.unit].format;
@@ -158,7 +158,7 @@ export function getLabelsAndData(lookback, start, request, operationNames, graph
   return { labels, datasets, maxData, interval };
 }
 
-export function getStatusPlot(status, yPlop) {
+function getStatusPlot(status, yPlop) {
   const statusData = [];
   const missingData = [];
   const statusFlag = yPlop === 'status';
@@ -356,5 +356,7 @@ ResultGraphImpl.defaultProps = {
   graphMenu: null,
 };
 
+const ResultGraph = ResultGraphImpl;
+
 export { ResultGraphImpl };
-export default dimensions()(ResultGraphImpl);
+export default dimensions()(ResultGraph);

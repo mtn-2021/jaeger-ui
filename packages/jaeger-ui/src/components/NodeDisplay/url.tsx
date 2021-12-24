@@ -25,10 +25,5 @@ export function matches(path: string) {
 }
 
 export function getUrl() {
-  const url = prefixUrl('/nodes');
-  if(!url === undefined) {
-    console.log("not undefined!");
-    return url;
-  }
-  return url;
+  return prefixUrl('/nodes');
 }
