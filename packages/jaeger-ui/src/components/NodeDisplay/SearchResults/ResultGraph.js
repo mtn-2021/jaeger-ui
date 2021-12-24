@@ -19,15 +19,15 @@ import { Bar } from 'react-chartjs-2';
 // import PropTypes from 'prop-types';
 // import { ONE_MILLISECOND } from '../../../utils/date';
 
-function getUintTime(time) {
-  const unit = time.substr(-1);
-  const units = {
-    m: 60,
-    h: 60 * 60,
-    d: 60 * 60 * 24,
-  };
-  return parseInt(time, 10) * units[unit] * 1000 * 1000;
-}
+// function getUintTime(time) {
+//   const unit = time.substr(-1);
+//   const units = {
+//     m: 60,
+//     h: 60 * 60,
+//     d: 60 * 60 * 24,
+//   };
+//   return parseInt(time, 10) * units[unit] * 1000 * 1000;
+// }
 
 // const colors = {
 //   0: 'rgba(30, 144, 255, 1)',
@@ -37,11 +37,11 @@ function getUintTime(time) {
 //   4: 'rgba(210, 83, 44, 1)',
 // };
 
-const UnitKeeper = {
-  m: { format: '~hh:mm a', half: '30s', full: 'minute' },
-  h: { format: '~MM/DD hh:mm a', underUnit: 'm', half: '30m', full: 'hour' },
-  d: { format: '~MM/DD', underUnit: 'h', half: '12h', full: 'day' },
-};
+// const UnitKeeper = {
+//   m: { format: '~hh:mm a', half: '30s', full: 'minute' },
+//   h: { format: '~MM/DD hh:mm a', underUnit: 'm', half: '30m', full: 'hour' },
+//   d: { format: '~MM/DD', underUnit: 'h', half: '12h', full: 'day' },
+// };
 
 // function getIntervalTime(lookback) {
 //   const unit = lookback.substr(-1);
