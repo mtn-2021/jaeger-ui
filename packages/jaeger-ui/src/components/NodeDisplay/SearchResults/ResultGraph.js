@@ -240,16 +240,16 @@ function ResultGraphImpl(props) {
   console.log(lb);
   console.log(graphMenu);
   if ((status && status.length > 0) || (request && request.length > 0)) {
-    // lookback = lb;
-    // const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
-    // const statusData = getStatusPlot(status, statusKey);
-    // labels = structure.labels;
-    // datasets = [].concat(statusData.datasets).concat(structure.datasets);
-    // xLabel = `Last ${parseInt(lookback, 10)} ${UnitKeeper[lookback.substr(-1)].full}`;
-    // intervalUnit = structure.interval;
-    // minData = 0;
-    // maxDataB = structure.maxData;
-    // maxDataS = statusData.maxData;
+    lookback = lb;
+    const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
+    const statusData = getStatusPlot(status, statusKey);
+    labels = structure.labels;
+    datasets = [].concat(statusData.datasets).concat(structure.datasets);
+    xLabel = `Last ${parseInt(lookback, 10)} ${UnitKeeper[lookback.substr(-1)].full}`;
+    intervalUnit = structure.interval;
+    minData = 0;
+    maxDataB = structure.maxData;
+    maxDataS = statusData.maxData;
   } else {
     lookback = '1h';
     console.log("before getData");
