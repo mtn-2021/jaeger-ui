@@ -43,44 +43,44 @@ const UnitKeeper = {
   d: { format: '~MM/DD', underUnit: 'h', half: '12h', full: 'day' },
 };
 
-// function getIntervalTime(lookback) {
-//   const unit = lookback.substr(-1);
-//   const vol = parseInt(lookback, 10);
-//   const interval = Math.floor(vol / 10);
-//   if (interval !== 0) {
-//     return {
-//       time: getUintTime(interval + unit),
-//       unit,
-//       interval: interval + unit,
-//     };
-//   }
-//   if (vol > 4) {
-//     return {
-//       time: getUintTime(UnitKeeper[unit].half),
-//       unit: UnitKeeper[unit].underUnit,
-//       interval: UnitKeeper[unit].half,
-//     };
-//   }
-//   if (unit === 'd') {
-//     return {
-//       time: getUintTime(vol * 2 + UnitKeeper[unit].underUnit),
-//       unit: UnitKeeper[unit].underUnit,
-//       interval: vol * 2 + UnitKeeper[unit].underUnit,
-//     };
-//   }
-//   if (unit === 'h') {
-//     return {
-//       time: getUintTime(vol * 5 + UnitKeeper[unit].underUnit),
-//       unit: UnitKeeper[unit].underUnit,
-//       interval: vol * 5 + UnitKeeper[unit].underUnit,
-//     };
-//   }
-//   return {
-//     time: getUintTime(1 + unit),
-//     unit,
-//     interval: 1 + unit,
-//   };
-// }
+function getIntervalTime(lookback) {
+  const unit = lookback.substr(-1);
+  const vol = parseInt(lookback, 10);
+  const interval = Math.floor(vol / 10);
+  if (interval !== 0) {
+    return {
+      time: getUintTime(interval + unit),
+      unit,
+      interval: interval + unit,
+    };
+  }
+  if (vol > 4) {
+    return {
+      time: getUintTime(UnitKeeper[unit].half),
+      unit: UnitKeeper[unit].underUnit,
+      interval: UnitKeeper[unit].half,
+    };
+  }
+  if (unit === 'd') {
+    return {
+      time: getUintTime(vol * 2 + UnitKeeper[unit].underUnit),
+      unit: UnitKeeper[unit].underUnit,
+      interval: vol * 2 + UnitKeeper[unit].underUnit,
+    };
+  }
+  if (unit === 'h') {
+    return {
+      time: getUintTime(vol * 5 + UnitKeeper[unit].underUnit),
+      unit: UnitKeeper[unit].underUnit,
+      interval: vol * 5 + UnitKeeper[unit].underUnit,
+    };
+  }
+  return {
+    time: getUintTime(1 + unit),
+    unit,
+    interval: 1 + unit,
+  };
+}
 
 // function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
 //   const lookbackTime = getUintTime(lookback);
@@ -296,7 +296,7 @@ function ResultGraphImpl(props) {
     labels = structure.labels;
     datasets = [].concat(statusData.datasets).concat(structure.datasets);
     xLabel = 'Last 1 hour';
-    intervalUnit = structure.interval;
+    intervalUnit = getIntervalTime(lookback); // structure.interval;
     minData = 0;
     maxDataB = 10;
     maxDataS = 1;
