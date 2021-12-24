@@ -18,6 +18,7 @@ import { Bar } from 'react-chartjs-2';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { ONE_MILLISECOND } from '../../../utils/date';
+import { compose } from 'recompose';
 
 function getUintTime(time) {
   const unit = time.substr(-1);
@@ -214,7 +215,7 @@ function getStatusPlot(status, yPlop) {
   return { datasets, maxData };
 }
 
-const ResultGraph = function ResultGraphImpl(props) {
+function ResultGraphImpl(props) {
   const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
   let lookback;
   let labels;
@@ -356,5 +357,7 @@ ResultGraphImpl.defaultProps = {
   graphMenu: null,
 };
 
-export { ResultGraph };
+const ResultGraph = compose()(ResultGraphImpl);
+
+export { ResultGraphImpl };
 export default dimensions()(ResultGraph);
