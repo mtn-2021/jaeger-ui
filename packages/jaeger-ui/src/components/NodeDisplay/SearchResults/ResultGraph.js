@@ -337,7 +337,7 @@ function ResultGraphImpl(props) {
   // return ( <div> <p2> Hello World!!!</p2> </div>);
   return (
      <div className="ResultGraph">
-       <Bar data={graphData} options={graphOption} />
+       <Bar data={graphData} />
      </div>
    );
 }
