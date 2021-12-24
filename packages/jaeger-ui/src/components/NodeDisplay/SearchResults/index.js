@@ -152,7 +152,7 @@ export class SearchResultImpl extends React.PureComponent {
         </div>
 
         <div className="SearchResults--graph">
-          {!lookback && (<ResultGraph
+          {(<ResultGraph
             request={request}
             status={status}
             start={start}
