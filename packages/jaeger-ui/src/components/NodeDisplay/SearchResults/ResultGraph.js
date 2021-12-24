@@ -16,7 +16,7 @@ import React from 'react';
 import dimensions from 'react-dimensions';
 import { Bar } from 'react-chartjs-2';
 import moment from 'moment';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { ONE_MILLISECOND } from '../../../utils/date';
 
 function getUintTime(time) {
@@ -373,25 +373,25 @@ function ResultGraphImpl(props) {
    );
 }
 
-ResultGraphImpl.propTypes = {
-  lookback: PropTypes.string,
-  start: PropTypes.number,
-  request: PropTypes.arrayOf(PropTypes.string),
-  status: PropTypes.arrayOf(PropTypes.string),
-  operationNames: PropTypes.arrayOf(PropTypes.string),
-  statusKey: PropTypes.string,
-  graphMenu: PropTypes.string,
-};
-
-ResultGraphImpl.defaultProps = {
-  lookback: null,
-  start: null,
-  request: [],
-  status: [],
-  operationNames: [],
-  statusKey: null,
-  graphMenu: null,
-};
+// ResultGraphImpl.propTypes = {
+//   lookback: PropTypes.string,
+//   start: PropTypes.number,
+//   request: PropTypes.arrayOf(PropTypes.string),
+//   status: PropTypes.arrayOf(PropTypes.string),
+//   operationNames: PropTypes.arrayOf(PropTypes.string),
+//   statusKey: PropTypes.string,
+//   graphMenu: PropTypes.string,
+// };
+//
+// ResultGraphImpl.defaultProps = {
+//   lookback: null,
+//   start: null,
+//   request: [],
+//   status: [],
+//   operationNames: [],
+//   statusKey: null,
+//   graphMenu: null,
+// };
 
 export { ResultGraphImpl };
 export default dimensions()(ResultGraphImpl);
