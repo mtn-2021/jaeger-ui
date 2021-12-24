@@ -43,10 +43,12 @@ export class SearchResultImpl extends React.PureComponent {
   };
 
   render() {
-    const { // start, lookback, request, status,
-      tableData, loading, statusKeys } = this.props;
+    const {  start, lookback, request, status, tableData, loading, statusKeys } = this.props;
     const { selectedKey, selectedMenu } = this.state;
-
+    console.log(start);
+    console.log(lookback);
+    console.log(request);
+    console.log(status);
     const columns = [
       {
         title: 'Operation Name',
@@ -169,19 +171,19 @@ export class SearchResultImpl extends React.PureComponent {
 }
 
 SearchResultImpl.propTypes = {
-  // lookback: PropTypes.string,
-  // start: PropTypes.number,
-  // request: PropTypes.arrayOf(PropTypes.string),
-  // status: PropTypes.arrayOf(PropTypes.string),
+  lookback: PropTypes.string,
+  start: PropTypes.number,
+  request: PropTypes.arrayOf(PropTypes.string),
+  status: PropTypes.arrayOf(PropTypes.string),
   tableData: PropTypes.arrayOf(PropTypes.string),
   loading: PropTypes.bool,
   statusKeys: PropTypes.arrayOf(PropTypes.string),
 };
 SearchResultImpl.defaultProps = {
-  // lookback: null,
-  // start: null,
-  // request: [],
-  // status: [],
+  lookback: null,
+  start: null,
+  request: [],
+  status: [],
   tableData: [],
   loading: false,
   statusKeys: [],
