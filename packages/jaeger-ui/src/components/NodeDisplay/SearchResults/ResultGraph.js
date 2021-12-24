@@ -17,8 +17,6 @@ import dimensions from 'react-dimensions';
 import { Bar } from 'react-chartjs-2';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import { compose } from 'recompose';
-
 import { ONE_MILLISECOND } from '../../../utils/date';
 
 function getUintTime(time) {
@@ -358,7 +356,5 @@ ResultGraphImpl.defaultProps = {
   graphMenu: null,
 };
 
-const ResultGraph = compose()(ResultGraphImpl);
-
 export { ResultGraphImpl };
-export default dimensions()(ResultGraph);
+export default dimensions()(ResultGraphImpl);
