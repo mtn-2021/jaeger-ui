@@ -356,7 +356,7 @@ ResultGraphImpl.defaultProps = {
   graphMenu: null,
 };
 
-const ResultGraph = ResultGraphImpl;
+const ResultGraph = (ResultGraphImpl);
 
 export { ResultGraphImpl };
 export default dimensions()(ResultGraph);
