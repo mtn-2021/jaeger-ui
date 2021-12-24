@@ -216,29 +216,28 @@ function getStatusPlot(status, yPlop) {
 
 function ResultGraphImpl(props) {
   const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
-  // let lookback;
-  // let labels;
-  // let datasets;
-  // let xLabel;
-  // let intervalUnit;
-  // let minData;
-  // let maxDataB;
-  // let maxDataS;
+  let lookback;
+  let labels;
+  let datasets;
+  let xLabel;
+  let intervalUnit;
+  let minData;
+  let maxDataB;
+  let maxDataS;
   console.log("before if");
-  console.log(lb);
-  // if ((status && status.length > 0) || (request && request.length > 0)) {
-  //   lookback = lb;
-  //   const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
-  //   const statusData = getStatusPlot(status, statusKey);
-  //   labels = structure.labels;
-  //   datasets = [].concat(statusData.datasets).concat(structure.datasets);
-  //   xLabel = `Last ${parseInt(lookback, 10)} ${UnitKeeper[lookback.substr(-1)].full}`;
-  //   intervalUnit = structure.interval;
-  //   minData = 0;
-  //   maxDataB = structure.maxData;
-  //   maxDataS = statusData.maxData;
-  // } else {
-    const lookback = '1h';
+  if ((status && status.length > 0) || (request && request.length > 0)) {
+    lookback = lb;
+    const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
+    const statusData = getStatusPlot(status, statusKey);
+    labels = structure.labels;
+    datasets = [].concat(statusData.datasets).concat(structure.datasets);
+    xLabel = `Last ${parseInt(lookback, 10)} ${UnitKeeper[lookback.substr(-1)].full}`;
+    intervalUnit = structure.interval;
+    minData = 0;
+    maxDataB = structure.maxData;
+    maxDataS = statusData.maxData;
+  } else {
+    lookback = '1h';
     console.log("before getData");
     const structure = getLabelsAndData(
       lookback,
@@ -249,14 +248,14 @@ function ResultGraphImpl(props) {
     );
     console.log("before getPlot");
     const statusData = getStatusPlot(status, statusKey);
-    const labels = structure.labels;
-    const datasets = [].concat(statusData.datasets).concat(structure.datasets);
-    const xLabel = 'Last 1 hour';
-    const intervalUnit = structure.interval;
-    const minData = 0;
-    const maxDataB = 10;
-    const maxDataS = 1;
-  // }
+    labels = structure.labels;
+    datasets = [].concat(statusData.datasets).concat(structure.datasets);
+    xLabel = 'Last 1 hour';
+    intervalUnit = structure.interval;
+    minData = 0;
+    maxDataB = 10;
+    maxDataS = 1;
+  }
   console.log("after if");
 
   const graphData = {
@@ -333,12 +332,12 @@ function ResultGraphImpl(props) {
     },
   };
   console.log("after graph");
-  // return ( <div> <p2> Hello World!!!</p2> </div>);
-  return (
-    <div className="App">
-      <Bar data={graphData} options={graphOption} />
-    </div>
-  );
+  return ( <div> <p2> Hello World!!!</p2> </div>);
+  // return (
+  //   <div className="App">
+  //     <Bar data={graphData} options={graphOption} />
+  //   </div>
+  // );
 }
 
 ResultGraphImpl.propTypes = {
