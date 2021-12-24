@@ -43,15 +43,15 @@ export function lookbackToTimestamp(lookback, from) {
   );
 }
 
-export function getIntervalTime(interval) {
-  const unit = interval.substr(-1);
-  const units = {
-    m: 60,
-    h: 60 * 60,
-    d: 60 * 60 * 24,
-  };
-  return parseInt(interval, 10) * units[unit] * 1000 * 1000;
-}
+// export function getIntervalTime(interval) {
+//   const unit = interval.substr(-1);
+//   const units = {
+//     m: 60,
+//     h: 60 * 60,
+//     d: 60 * 60 * 24,
+//   };
+//   return parseInt(interval, 10) * units[unit] * 1000 * 1000;
+// }
 
 export function submitForm(fields, fetchRequestToNode) {
   const { node, service, lookback } = fields;
