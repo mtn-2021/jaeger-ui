@@ -25,6 +25,10 @@ export function matches(path: string) {
 }
 
 export function getUrl() {
-  return prefixUrl('/nodes');
-  // searchのは検索の設定用引数
+  const url = prefixUrl('/nodes');
+  if(!url === undefined) {
+    console.log("not undefined!");
+    return url;
+  }
+  return url;
 }
