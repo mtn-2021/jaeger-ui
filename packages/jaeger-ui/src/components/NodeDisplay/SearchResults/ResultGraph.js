@@ -13,7 +13,7 @@
 // limitations under the License.
 
 import React from 'react';
-import dimensions from 'react-dimensions';
+// import dimensions from 'react-dimensions';
 import { Bar }  from 'react-chartjs-2';
 // import moment from 'moment';
 import PropTypes from 'prop-types';
@@ -413,5 +413,5 @@ ResultGraphImpl.defaultProps = {
   graphMenu: null,
 };
 
-export { ResultGraphImpl };
-export default dimensions()(ResultGraphImpl);
+// export { ResultGraphImpl };
+export default ResultGraphImpl;
