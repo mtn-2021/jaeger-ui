@@ -158,61 +158,73 @@ function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
   return { labels, datasets, maxData, interval };
 }
 
-// function getStatusPlot(status, yPlop) {
-//   const statusData = [];
-//   const missingData = [];
-//   const statusFlag = yPlop === 'status';
-//   let maxData = -Infinity;
-//
-//   status.forEach(stPart => {
-//     if (stPart.isOn) {
-//       const index = [].concat(stPart.keys).indexOf(yPlop);
-//       if (index >= 0) {
-//         const value = statusFlag ? 1 : parseInt(stPart.values[index], 10);
-//         statusData.push({
-//           operationName: stPart.operationName,
-//           x: stPart.timestamp / ONE_MILLISECOND,
-//           y: value,
-//         });
-//         if (maxData < value) maxData = value;
-//       }
-//     } else {
-//       missingData.push({
-//         operationName: stPart.operationName,
-//         x: stPart.timestamp / ONE_MILLISECOND,
-//         y: 0,
-//       });
-//     }
-//   });
-//
-//   const datasets = [
-//     {
-//       type: 'scatter',
-//       data: statusData,
-//       label: yPlop,
-//       backgroundColor: `rgba(117, 219, 219,1)`,
-//       yAxisID: 'y-scat',
-//       xAxisID: 'x-scat',
-//     },
-//     {
-//       type: 'scatter',
-//       data: missingData,
-//       label: 'disConnect',
-//       backgroundColor: `rgba(255, 15, 43, 1)`,
-//       yAxisID: 'y-scat',
-//       xAxisID: 'x-scat',
-//     },
-//   ];
-//
-//   let i;
-//   for (i = 0; maxData > 100; i++) {
-//     maxData /= 10;
-//   }
-//
-//   maxData = Math.ceil(maxData) * 10 ** i;
-//   if (maxData === -Infinity) maxData = 1;
-//   return { datasets, maxData };
-// }
+function getStatusPlot(status, yPlop) {
+  const statusData = [];
+  const missingData = [];
+  statusData.push(
+      {
+        operationName: "test",
+        x: 164035633771,
+        y: 0.5,
+      });
+  missingData.push(
+      {
+        operationName: "test2",
+        x: 164035640000,
+        y: 1,
+      });
+  // const statusFlag = yPlop === 'status';
+  let maxData = -Infinity;
+
+  // status.forEach(stPart => {
+  //   if (stPart.isOn) {
+  //     const index = [].concat(stPart.keys).indexOf(yPlop);
+  //     if (index >= 0) {
+  //       const value = statusFlag ? 1 : parseInt(stPart.values[index], 10);
+  //       statusData.push({
+  //         operationName: stPart.operationName,
+  //         x: stPart.timestamp / ONE_MILLISECOND,
+  //         y: value,
+  //       });
+  //       if (maxData < value) maxData = value;
+  //     }
+  //   } else {
+  //     missingData.push({
+  //       operationName: stPart.operationName,
+  //       x: stPart.timestamp / ONE_MILLISECOND,
+  //       y: 0,
+  //     });
+  //   }
+  // });
+
+  const datasets = [
+    {
+      type: 'scatter',
+      data: statusData,
+      label: yPlop,
+      backgroundColor: `rgba(117, 219, 219,1)`,
+      yAxisID: 'y-scat',
+      xAxisID: 'x-scat',
+    },
+    {
+      type: 'scatter',
+      data: missingData,
+      label: 'disConnect',
+      backgroundColor: `rgba(255, 15, 43, 1)`,
+      yAxisID: 'y-scat',
+      xAxisID: 'x-scat',
+    },
+  ];
+
+  let i;
+  for (i = 0; maxData > 100; i++) {
+    maxData /= 10;
+  }
+
+  maxData = Math.ceil(maxData) * 10 ** i;
+  if (maxData === -Infinity) maxData = 1;
+  return { datasets, maxData };
+}
 
 function ResultGraphImpl(props) {
   const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
@@ -263,36 +275,36 @@ function ResultGraphImpl(props) {
     // }
 
     console.log("before getPlot");
-    // const statusData = getStatusPlot(status, statusKey);
-    const statusData = {
-      datasets: [{
-        type: 'scatter',
-        data: [{
-          operationName: "test",
-          x: 164035633771,
-          y: 0.5,}, {
-          operationName: "test2",
-          x: 164035640000,
-          y: 1,},],
-        label: statusKey,
-        backgroundColor: `rgba(117, 219, 219,1)`,
-        yAxisID: 'y-scat',
-        xAxisID: 'x-scat',
-      }, {
-        type: 'scatter',
-        data: [{
-          operationName: "test3",
-          x: 164035633771,
-          y: 0.25,}, {
-          operationName: "test4",
-          x: 164035640000,
-          y: 0,},],
-        label: 'disConnect',
-        backgroundColor: `rgba(255, 15, 43, 1)`,
-        yAxisID: 'y-scat',
-        xAxisID: 'x-scat',
-      },]
-    };
+    const statusData = getStatusPlot(status, statusKey);
+    // const statusData = {
+    //   datasets: [{
+    //     type: 'scatter',
+    //     data: [{
+    //       operationName: "test",
+    //       x: 164035633771,
+    //       y: 0.5,}, {
+    //       operationName: "test2",
+    //       x: 164035640000,
+    //       y: 1,},],
+    //     label: statusKey,
+    //     backgroundColor: `rgba(117, 219, 219,1)`,
+    //     yAxisID: 'y-scat',
+    //     xAxisID: 'x-scat',
+    //   }, {
+    //     type: 'scatter',
+    //     data: [{
+    //       operationName: "test3",
+    //       x: 164035633771,
+    //       y: 0.25,}, {
+    //       operationName: "test4",
+    //       x: 164035640000,
+    //       y: 0,},],
+    //     label: 'disConnect',
+    //     backgroundColor: `rgba(255, 15, 43, 1)`,
+    //     yAxisID: 'y-scat',
+    //     xAxisID: 'x-scat',
+    //   },]
+    // };
     labels = structure.labels;
     datasets = [].concat(statusData.datasets).concat(structure.datasets);
     xLabel = 'Last 1 hour';
