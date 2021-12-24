@@ -224,6 +224,7 @@ function ResultGraphImpl(props) {
   let minData;
   let maxDataB;
   let maxDataS;
+  console.log(request);
   if ((status && status.length > 0) || (request && request.length > 0)) {
     lookback = lb;
     const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
