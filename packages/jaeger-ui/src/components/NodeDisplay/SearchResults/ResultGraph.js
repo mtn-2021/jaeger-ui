@@ -16,18 +16,18 @@ import React from 'react';
 import dimensions from 'react-dimensions';
 import { Bar } from 'react-chartjs-2';
 // import moment from 'moment';
-// import PropTypes from 'prop-types';
-// import { ONE_MILLISECOND } from '../../../utils/date';
+import PropTypes from 'prop-types';
+import { ONE_MILLISECOND } from '../../../utils/date';
 
-// function getUintTime(time) {
-//   const unit = time.substr(-1);
-//   const units = {
-//     m: 60,
-//     h: 60 * 60,
-//     d: 60 * 60 * 24,
-//   };
-//   return parseInt(time, 10) * units[unit] * 1000 * 1000;
-// }
+function getUintTime(time) {
+  const unit = time.substr(-1);
+  const units = {
+    m: 60,
+    h: 60 * 60,
+    d: 60 * 60 * 24,
+  };
+  return parseInt(time, 10) * units[unit] * 1000 * 1000;
+}
 
 // const colors = {
 //   0: 'rgba(30, 144, 255, 1)',
@@ -37,11 +37,11 @@ import { Bar } from 'react-chartjs-2';
 //   4: 'rgba(210, 83, 44, 1)',
 // };
 
-// const UnitKeeper = {
-//   m: { format: '~hh:mm a', half: '30s', full: 'minute' },
-//   h: { format: '~MM/DD hh:mm a', underUnit: 'm', half: '30m', full: 'hour' },
-//   d: { format: '~MM/DD', underUnit: 'h', half: '12h', full: 'day' },
-// };
+const UnitKeeper = {
+  m: { format: '~hh:mm a', half: '30s', full: 'minute' },
+  h: { format: '~MM/DD hh:mm a', underUnit: 'm', half: '30m', full: 'hour' },
+  d: { format: '~MM/DD', underUnit: 'h', half: '12h', full: 'day' },
+};
 
 // function getIntervalTime(lookback) {
 //   const unit = lookback.substr(-1);
@@ -157,7 +157,7 @@ import { Bar } from 'react-chartjs-2';
 //
 //   return { labels, datasets, maxData, interval };
 // }
-//
+
 // function getStatusPlot(status, yPlop) {
 //   const statusData = [];
 //   const missingData = [];
@@ -215,183 +215,197 @@ import { Bar } from 'react-chartjs-2';
 // }
 
 function ResultGraphImpl(props) {
-  console.log(props);
-  // const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
-  // let lookback;
-  // let labels;
-  // let datasets;
-  // let xLabel;
-  // let intervalUnit;
-  // let minData;
-  // let maxDataB;
-  // let maxDataS;
-  // console.log("before if");
-  // if ((status && status.length > 0) || (request && request.length > 0)) {
-  //   lookback = lb;
-  //   const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
-  //   const statusData = getStatusPlot(status, statusKey);
-  //   labels = structure.labels;
-  //   datasets = [].concat(statusData.datasets).concat(structure.datasets);
-  //   xLabel = `Last ${parseInt(lookback, 10)} ${UnitKeeper[lookback.substr(-1)].full}`;
-  //   intervalUnit = structure.interval;
-  //   minData = 0;
-  //   maxDataB = structure.maxData;
-  //   maxDataS = statusData.maxData;
-  // } else {
-  //   lookback = '1h';
-  //   console.log("before getData");
-  //   const structure = getLabelsAndData(
-  //     lookback,
-  //     new Date() * 1000 - getUintTime(lookback),
-  //     request,
-  //     operationNames,
-  //     graphMenu
-  //   );
-  //   console.log("before getPlot");
-  //   const statusData = getStatusPlot(status, statusKey);
-  //   labels = structure.labels;
-  //   datasets = [].concat(statusData.datasets).concat(structure.datasets);
-  //   xLabel = 'Last 1 hour';
-  //   intervalUnit = structure.interval;
-  //   minData = 0;
-  //   maxDataB = 10;
-  //   maxDataS = 1;
-  // }
+  const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
+  let lookback;
+  let labels;
+  let datasets;
+  let xLabel;
+  let intervalUnit;
+  let minData;
+  let maxDataB;
+  let maxDataS;
+  console.log("before if");
+  console.log(lb);
+  console.log(graphMenu);
+  if ((status && status.length > 0) || (request && request.length > 0)) {
+    // lookback = lb;
+    // const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
+    // const statusData = getStatusPlot(status, statusKey);
+    // labels = structure.labels;
+    // datasets = [].concat(statusData.datasets).concat(structure.datasets);
+    // xLabel = `Last ${parseInt(lookback, 10)} ${UnitKeeper[lookback.substr(-1)].full}`;
+    // intervalUnit = structure.interval;
+    // minData = 0;
+    // maxDataB = structure.maxData;
+    // maxDataS = statusData.maxData;
+  } else {
+    lookback = '1h';
+    console.log("before getData");
+    // getLabelsAndData(
+    //   lookback,
+    //   new Date() * 1000 - getUintTime(lookback),
+    //   request,
+    //   operationNames,
+    //   graphMenu
+    // );
+    const structure = {
+      labels: ["1","2","3","4","5"],
+      datasets: [
+          {
+            type: 'bar',
+            data: [1,2,3,4,5],
+            label: 'Number of request',
+            backgroundColor: 'rgba(30, 144, 255, 1)',
+            yAxisID: 'y-bar',
+            xAxisID: 'x-bar',
+          },
+      ]
+    }
+
+    console.log("before getPlot");
+    // const statusData = getStatusPlot(status, statusKey);
+    const statusData = {
+      datasets: [{
+        type: 'scatter',
+        data: [{
+          operationName: "test",
+          x: 164035633771,
+          y: 0.5,}, {
+          operationName: "test2",
+          x: 164035640000,
+          y: 1,},],
+        label: statusKey,
+        backgroundColor: `rgba(117, 219, 219,1)`,
+        yAxisID: 'y-scat',
+        xAxisID: 'x-scat',
+      }, {
+        type: 'scatter',
+        data: [{
+          operationName: "test3",
+          x: 164035633771,
+          y: 0.25,}, {
+          operationName: "test4",
+          x: 164035640000,
+          y: 0,},],
+        label: 'disConnect',
+        backgroundColor: `rgba(255, 15, 43, 1)`,
+        yAxisID: 'y-scat',
+        xAxisID: 'x-scat',
+      },]
+    };
+    labels = structure.labels;
+    datasets = [].concat(statusData.datasets).concat(structure.datasets);
+    xLabel = 'Last 1 hour';
+    intervalUnit = structure.interval;
+    minData = 0;
+    maxDataB = 10;
+    maxDataS = 1;
+  }
   console.log("after if");
 
-  const graphData = {labels: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月'],
-    datasets: [
-      {
-        label: 'Dataset',
-        // データの値
-        data: [65, 59, 80, 81, 56, 55, 40],
-        // グラフの背景色
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 205, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(201, 203, 207, 0.2)',
-        ],
-        // グラフの枠線の色
-        borderColor: [
-          'rgb(255, 99, 132)',
-          'rgb(255, 159, 64)',
-          'rgb(255, 205, 86)',
-          'rgb(75, 192, 192)',
-          'rgb(54, 162, 235)',
-          'rgb(153, 102, 255)',
-          'rgb(201, 203, 207)',
-        ],
-        // グラフの枠線の太さ
-        borderWidth: 1,
+  const graphData = {
+    labels,
+    datasets,
+  };
+  const graphOption = {
+    legend: {
+      display: true,
+      labels: {
+        filter: items => {
+          return operationNames.indexOf(items.text) !== -1;
+        },
       },
-    ],};
-  // const graphData = {
-  //   labels,
-  //   datasets,
-  // };
-  // const graphOption = {
-  //   legend: {
-  //     display: true,
-  //     labels: {
-  //       filter: items => {
-  //         return operationNames.indexOf(items.text) !== -1;
-  //       },
-  //     },
-  //   },
-  //   scales: {
-  //     xAxes: [
-  //       {
-  //         id: 'x-bar',
-  //         stacked: true,
-  //         scaleLabel: {
-  //           display: true,
-  //           labelString: xLabel,
-  //         },
-  //       },
-  //       {
-  //         id: 'x-scat',
-  //         scaleLabel: {
-  //           display: false,
-  //         },
-  //         type: 'time',
-  //         time: {
-  //           parser: UnitKeeper[intervalUnit.unit].format,
-  //         },
-  //         ticks: {
-  //           source: 'labels',
-  //           min: start / ONE_MILLISECOND,
-  //           max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
-  //         },
-  //       },
-  //     ],
-  //     yAxes: [
-  //       {
-  //         id: 'y-bar',
-  //         position: 'left',
-  //         stacked: true,
-  //         scaleLabel: {
-  //           display: true,
-  //           labelString: `Number of requests(/${intervalUnit.interval})`,
-  //         },
-  //         ticks: {
-  //           beginAtZero: true,
-  //           min: minData,
-  //           max: maxDataB,
-  //           callback: value => {
-  //             return `${value}`;
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'y-scat',
-  //         position: 'right',
-  //         scaleLabel: {
-  //           display: true,
-  //           labelString: `${statusKey}`,
-  //         },
-  //         ticks: {
-  //           beginAtZero: true,
-  //           min: minData,
-  //           max: maxDataS,
-  //         },
-  //       },
-  //     ],
-  //   },
-  // };
+    },
+    scales: {
+      xAxes: [
+        {
+          id: 'x-bar',
+          stacked: true,
+          scaleLabel: {
+            display: true,
+            labelString: xLabel,
+          },
+        },
+        {
+          id: 'x-scat',
+          scaleLabel: {
+            display: false,
+          },
+          type: 'time',
+          time: {
+            parser: UnitKeeper[intervalUnit.unit].format,
+          },
+          ticks: {
+            source: 'labels',
+            min: start / ONE_MILLISECOND,
+            max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
+          },
+        },
+      ],
+      yAxes: [
+        {
+          id: 'y-bar',
+          position: 'left',
+          stacked: true,
+          scaleLabel: {
+            display: true,
+            labelString: `Number of requests(/${intervalUnit.interval})`,
+          },
+          ticks: {
+            beginAtZero: true,
+            min: minData,
+            max: maxDataB,
+            callback: value => {
+              return `${value}`;
+            },
+          },
+        },
+        {
+          id: 'y-scat',
+          position: 'right',
+          scaleLabel: {
+            display: true,
+            labelString: `${statusKey}`,
+          },
+          ticks: {
+            beginAtZero: true,
+            min: minData,
+            max: maxDataS,
+          },
+        },
+      ],
+    },
+  };
   console.log("after graph");
   console.log(graphData);
-  // console.log(graphOption); options={graphOption}
+  console.log(graphOption);
   // return ( <div> <p2> Hello World!!!</p2> </div>);
   return (
      <div className="ResultGraph">
-       <Bar data={graphData}  />
+       <Bar data={graphData} options={graphOption} />
      </div>
    );
 }
 
-// ResultGraphImpl.propTypes = {
-//   lookback: PropTypes.string,
-//   start: PropTypes.number,
-//   request: PropTypes.arrayOf(PropTypes.string),
-//   status: PropTypes.arrayOf(PropTypes.string),
-//   operationNames: PropTypes.arrayOf(PropTypes.string),
-//   statusKey: PropTypes.string,
-//   graphMenu: PropTypes.string,
-// };
-//
-// ResultGraphImpl.defaultProps = {
-//   lookback: null,
-//   start: null,
-//   request: [],
-//   status: [],
-//   operationNames: [],
-//   statusKey: null,
-//   graphMenu: null,
-// };
+ResultGraphImpl.propTypes = {
+  lookback: PropTypes.string,
+  start: PropTypes.number,
+  request: PropTypes.arrayOf(PropTypes.string),
+  status: PropTypes.arrayOf(PropTypes.string),
+  operationNames: PropTypes.arrayOf(PropTypes.string),
+  statusKey: PropTypes.string,
+  graphMenu: PropTypes.string,
+};
+
+ResultGraphImpl.defaultProps = {
+  lookback: null,
+  start: null,
+  request: [],
+  status: [],
+  operationNames: [],
+  statusKey: null,
+  graphMenu: null,
+};
 
 export { ResultGraphImpl };
 export default dimensions()(ResultGraphImpl);
