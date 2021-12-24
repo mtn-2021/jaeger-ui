@@ -152,7 +152,7 @@ export class SearchResultImpl extends React.PureComponent {
         </div>
 
         <div className="SearchResults--graph">
-          {(<ResultGraph
+          <ResultGraph
             request={request}
             status={status}
             start={start}
@@ -161,7 +161,6 @@ export class SearchResultImpl extends React.PureComponent {
             statusKey={selectedKey}
             graphMenu={selectedMenu}
            />
-          )}
         </div>
         <div className="SearchResults--tables">
           <Table columns={columns} dataSource={data} />
