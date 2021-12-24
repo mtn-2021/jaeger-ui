@@ -82,137 +82,137 @@ function getIntervalTime(lookback) {
   };
 }
 
-function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
-  const lookbackTime = getUintTime(lookback);
-  const interval = getIntervalTime(lookback);
-  const format = UnitKeeper[interval.unit].format;
-  const intervalTime = interval.time;
-  const length = lookbackTime / intervalTime;
-  let requestLength = request.length - 1;
-  let time = start;
-  const labels = [];
-  const data = [];
-  const dataCount = [];
-
-  for (let i = 0; i <= length - 1; i++) {
-    const dataPart = [];
-    operationNames.forEach(operationName => {
-      dataPart[operationName] = 0;
-    });
-    let count = 0;
-
-    for (let l = requestLength; l >= 0; l--) {
-      if (request[l].startTime >= time && request[l].startTime < time + intervalTime) {
-        if (graphMenu === 'allRequest') {
-          count++;
-          dataPart[request[l].operationName] += 1;
-        } else if (graphMenu === 'failedRequest' && request[l].failed !== null) {
-          count++;
-          dataPart[request[l].operationName] += 1;
-        } else if (graphMenu === 'successRequest' && request[l].failed === null) {
-          count++;
-          dataPart[request[l].operationName] += 1;
-        }
-      } else {
-        requestLength = l;
-        break;
-      }
-    }
-
-    data.push(count);
-    for (let op = 0; op < operationNames.length; op++) {
-      const tmpCount = [].concat(dataCount[operationNames[op]]);
-      tmpCount.push(dataPart[operationNames[op]]);
-      dataCount[operationNames[op]] = tmpCount;
-    }
-
-    time += intervalTime;
-    const label = moment(time / ONE_MILLISECOND)
-      .format(format)
-      .split(' ');
-    labels.push(label);
-  }
-
-  let datasets = operationNames.map((operationName, index) => ({
-    type: 'bar',
-    data: [].concat(dataCount[operationName]).filter(v => !(v === undefined)),
-    label: operationName,
-    backgroundColor: colors[index],
-    yAxisID: 'y-bar',
-    xAxisID: 'x-bar',
-  }));
-  if (!(datasets && datasets.length > 0))
-    datasets = [
-      {
-        type: 'bar',
-        data,
-        label: 'Number of request',
-        yAxisID: 'y-bar',
-        xAxisID: 'x-bar',
-      },
-    ];
-
-  const max = data.reduce((a, b) => Math.max(a, b));
-  const maxData = 5 - (max % 5) + max;
-
-  return { labels, datasets, maxData, interval };
-}
-
-function getStatusPlot(status, yPlop) {
-  const statusData = [];
-  const missingData = [];
-  const statusFlag = yPlop === 'status';
-  let maxData = -Infinity;
-
-  status.forEach(stPart => {
-    if (stPart.isOn) {
-      const index = [].concat(stPart.keys).indexOf(yPlop);
-      if (index >= 0) {
-        const value = statusFlag ? 1 : parseInt(stPart.values[index], 10);
-        statusData.push({
-          operationName: stPart.operationName,
-          x: stPart.timestamp / ONE_MILLISECOND,
-          y: value,
-        });
-        if (maxData < value) maxData = value;
-      }
-    } else {
-      missingData.push({
-        operationName: stPart.operationName,
-        x: stPart.timestamp / ONE_MILLISECOND,
-        y: 0,
-      });
-    }
-  });
-
-  const datasets = [
-    {
-      type: 'scatter',
-      data: statusData,
-      label: yPlop,
-      backgroundColor: `rgba(117, 219, 219,1)`,
-      yAxisID: 'y-scat',
-      xAxisID: 'x-scat',
-    },
-    {
-      type: 'scatter',
-      data: missingData,
-      label: 'disConnect',
-      backgroundColor: `rgba(255, 15, 43, 1)`,
-      yAxisID: 'y-scat',
-      xAxisID: 'x-scat',
-    },
-  ];
-
-  let i;
-  for (i = 0; maxData > 100; i++) {
-    maxData /= 10;
-  }
-
-  maxData = Math.ceil(maxData) * 10 ** i;
-  if (maxData === -Infinity) maxData = 1;
-  return { datasets, maxData };
-}
+// function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
+//   const lookbackTime = getUintTime(lookback);
+//   const interval = getIntervalTime(lookback);
+//   const format = UnitKeeper[interval.unit].format;
+//   const intervalTime = interval.time;
+//   const length = lookbackTime / intervalTime;
+//   let requestLength = request.length - 1;
+//   let time = start;
+//   const labels = [];
+//   const data = [];
+//   const dataCount = [];
+//
+//   for (let i = 0; i <= length - 1; i++) {
+//     const dataPart = [];
+//     operationNames.forEach(operationName => {
+//       dataPart[operationName] = 0;
+//     });
+//     let count = 0;
+//
+//     for (let l = requestLength; l >= 0; l--) {
+//       if (request[l].startTime >= time && request[l].startTime < time + intervalTime) {
+//         if (graphMenu === 'allRequest') {
+//           count++;
+//           dataPart[request[l].operationName] += 1;
+//         } else if (graphMenu === 'failedRequest' && request[l].failed !== null) {
+//           count++;
+//           dataPart[request[l].operationName] += 1;
+//         } else if (graphMenu === 'successRequest' && request[l].failed === null) {
+//           count++;
+//           dataPart[request[l].operationName] += 1;
+//         }
+//       } else {
+//         requestLength = l;
+//         break;
+//       }
+//     }
+//
+//     data.push(count);
+//     for (let op = 0; op < operationNames.length; op++) {
+//       const tmpCount = [].concat(dataCount[operationNames[op]]);
+//       tmpCount.push(dataPart[operationNames[op]]);
+//       dataCount[operationNames[op]] = tmpCount;
+//     }
+//
+//     time += intervalTime;
+//     const label = moment(time / ONE_MILLISECOND)
+//       .format(format)
+//       .split(' ');
+//     labels.push(label);
+//   }
+//
+//   let datasets = operationNames.map((operationName, index) => ({
+//     type: 'bar',
+//     data: [].concat(dataCount[operationName]).filter(v => !(v === undefined)),
+//     label: operationName,
+//     backgroundColor: colors[index],
+//     yAxisID: 'y-bar',
+//     xAxisID: 'x-bar',
+//   }));
+//   if (!(datasets && datasets.length > 0))
+//     datasets = [
+//       {
+//         type: 'bar',
+//         data,
+//         label: 'Number of request',
+//         yAxisID: 'y-bar',
+//         xAxisID: 'x-bar',
+//       },
+//     ];
+//
+//   const max = data.reduce((a, b) => Math.max(a, b));
+//   const maxData = 5 - (max % 5) + max;
+//
+//   return { labels, datasets, maxData, interval };
+// }
+//
+// function getStatusPlot(status, yPlop) {
+//   const statusData = [];
+//   const missingData = [];
+//   const statusFlag = yPlop === 'status';
+//   let maxData = -Infinity;
+//
+//   status.forEach(stPart => {
+//     if (stPart.isOn) {
+//       const index = [].concat(stPart.keys).indexOf(yPlop);
+//       if (index >= 0) {
+//         const value = statusFlag ? 1 : parseInt(stPart.values[index], 10);
+//         statusData.push({
+//           operationName: stPart.operationName,
+//           x: stPart.timestamp / ONE_MILLISECOND,
+//           y: value,
+//         });
+//         if (maxData < value) maxData = value;
+//       }
+//     } else {
+//       missingData.push({
+//         operationName: stPart.operationName,
+//         x: stPart.timestamp / ONE_MILLISECOND,
+//         y: 0,
+//       });
+//     }
+//   });
+//
+//   const datasets = [
+//     {
+//       type: 'scatter',
+//       data: statusData,
+//       label: yPlop,
+//       backgroundColor: `rgba(117, 219, 219,1)`,
+//       yAxisID: 'y-scat',
+//       xAxisID: 'x-scat',
+//     },
+//     {
+//       type: 'scatter',
+//       data: missingData,
+//       label: 'disConnect',
+//       backgroundColor: `rgba(255, 15, 43, 1)`,
+//       yAxisID: 'y-scat',
+//       xAxisID: 'x-scat',
+//     },
+//   ];
+//
+//   let i;
+//   for (i = 0; maxData > 100; i++) {
+//     maxData /= 10;
+//   }
+//
+//   maxData = Math.ceil(maxData) * 10 ** i;
+//   if (maxData === -Infinity) maxData = 1;
+//   return { datasets, maxData };
+// }
 
 function ResultGraphImpl(props) {
   console.log(props);
