@@ -224,19 +224,19 @@ function ResultGraphImpl(props) {
   let minData;
   let maxDataB;
   let maxDataS;
-  console.log("before if");
-  if ((status && status.length > 0) || (request && request.length > 0)) {
-    lookback = lb;
-    const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
-    const statusData = getStatusPlot(status, statusKey);
-    labels = structure.labels;
-    datasets = [].concat(statusData.datasets).concat(structure.datasets);
-    xLabel = `Last ${parseInt(lookback, 10)} ${UnitKeeper[lookback.substr(-1)].full}`;
-    intervalUnit = structure.interval;
-    minData = 0;
-    maxDataB = structure.maxData;
-    maxDataS = statusData.maxData;
-  } else {
+  console.log("before if" + lb);
+  // if ((status && status.length > 0) || (request && request.length > 0)) {
+  //   lookback = lb;
+  //   const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
+  //   const statusData = getStatusPlot(status, statusKey);
+  //   labels = structure.labels;
+  //   datasets = [].concat(statusData.datasets).concat(structure.datasets);
+  //   xLabel = `Last ${parseInt(lookback, 10)} ${UnitKeeper[lookback.substr(-1)].full}`;
+  //   intervalUnit = structure.interval;
+  //   minData = 0;
+  //   maxDataB = structure.maxData;
+  //   maxDataS = statusData.maxData;
+  // } else {
     lookback = '1h';
     console.log("before getData");
     const structure = getLabelsAndData(
@@ -255,7 +255,7 @@ function ResultGraphImpl(props) {
     minData = 0;
     maxDataB = 10;
     maxDataS = 1;
-  }
+  // }
   console.log("after if");
 
   const graphData = {

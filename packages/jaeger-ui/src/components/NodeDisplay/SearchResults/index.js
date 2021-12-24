@@ -45,7 +45,6 @@ export class SearchResultImpl extends React.PureComponent {
   render() {
     const {  start, lookback, request, status, tableData, loading, statusKeys } = this.props;
     const { selectedKey, selectedMenu } = this.state;
-    const operations = tableData.operations;
     console.log(start);
     console.log(lookback);
     console.log(request);
@@ -153,15 +152,16 @@ export class SearchResultImpl extends React.PureComponent {
         </div>
 
         <div className="SearchResults--graph">
-          <ResultGraph
+          {!lookback && (<ResultGraph
             request={request}
             status={status}
             start={start}
             lookback={lookback}
-            operationNames={operations}
+            operationNames={tableData.operations}
             statusKey={selectedKey}
             graphMenu={selectedMenu}
            />
+          )}
         </div>
         <div className="SearchResults--tables">
           <Table columns={columns} dataSource={data} />
