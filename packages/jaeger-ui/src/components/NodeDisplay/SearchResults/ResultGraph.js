@@ -216,15 +216,16 @@ function getStatusPlot(status, yPlop) {
 
 function ResultGraphImpl(props) {
   const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
-  let lookback;
-  let labels;
-  let datasets;
-  let xLabel;
-  let intervalUnit;
-  let minData;
-  let maxDataB;
-  let maxDataS;
-  console.log("before if" + lb);
+  // let lookback;
+  // let labels;
+  // let datasets;
+  // let xLabel;
+  // let intervalUnit;
+  // let minData;
+  // let maxDataB;
+  // let maxDataS;
+  console.log("before if");
+  console.log(lb);
   // if ((status && status.length > 0) || (request && request.length > 0)) {
   //   lookback = lb;
   //   const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
@@ -237,7 +238,7 @@ function ResultGraphImpl(props) {
   //   maxDataB = structure.maxData;
   //   maxDataS = statusData.maxData;
   // } else {
-    lookback = '1h';
+    const lookback = '1h';
     console.log("before getData");
     const structure = getLabelsAndData(
       lookback,
@@ -248,13 +249,13 @@ function ResultGraphImpl(props) {
     );
     console.log("before getPlot");
     const statusData = getStatusPlot(status, statusKey);
-    labels = structure.labels;
-    datasets = [].concat(statusData.datasets).concat(structure.datasets);
-    xLabel = 'Last 1 hour';
-    intervalUnit = structure.interval;
-    minData = 0;
-    maxDataB = 10;
-    maxDataS = 1;
+    const labels = structure.labels;
+    const datasets = [].concat(statusData.datasets).concat(structure.datasets);
+    const xLabel = 'Last 1 hour';
+    const intervalUnit = structure.interval;
+    const minData = 0;
+    const maxDataB = 10;
+    const maxDataS = 1;
   // }
   console.log("after if");
 
