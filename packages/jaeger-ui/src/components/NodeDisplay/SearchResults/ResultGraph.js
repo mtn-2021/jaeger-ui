@@ -14,7 +14,7 @@
 
 import React from 'react';
 import dimensions from 'react-dimensions';
-import  Bar  from 'react-chartjs-2';
+import { Bar }  from 'react-chartjs-2';
 // import moment from 'moment';
 import PropTypes from 'prop-types';
 // import { ONE_MILLISECOND } from '../../../utils/date';
@@ -236,7 +236,7 @@ function ResultGraphImpl(props) {
   let minData;
   let maxDataB;
   let maxDataS;
-  console.log({lb,graphMenu,start,operationNames});
+  console.log(lb,graphMenu,start,operationNames);
   if ((status && status.length > 0) || (request && request.length > 0)) {
     // lookback = lb;
     // const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
