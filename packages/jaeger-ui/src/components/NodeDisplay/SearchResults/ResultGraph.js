@@ -236,7 +236,7 @@ function ResultGraphImpl(props) {
   let minData;
   let maxDataB;
   let maxDataS;
-  console.log({lb,graphMenu});
+  console.log({lb,graphMenu,start,operationNames});
   if ((status && status.length > 0) || (request && request.length > 0)) {
     // lookback = lb;
     // const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
@@ -309,88 +309,88 @@ function ResultGraphImpl(props) {
     maxDataB = 10;
     maxDataS = 1;
   }
-
+  console.log(xLabel,intervalUnit,minData,maxDataB,maxDataS);
   const graphData = {
     labels,
     datasets,
   };
-  const graphOption = {
-    legend: {
-      display: true,
-      labels: {
-        filter: items => {
-          return operationNames.indexOf(items.text) !== -1;
-        },
-      },
-    },
-    scales: {
-      xAxes: [
-        {
-          id: 'x-bar',
-          stacked: true,
-          scaleLabel: {
-            display: true,
-            labelString: xLabel,
-          },
-        },
-        {
-          id: 'x-scat',
-          scaleLabel: {
-            display: false,
-          },
-          type: 'time',
-          time: {
-            parser: UnitKeeper[intervalUnit.unit].format,
-          },
-          ticks: {
-            source: 'labels',
-            min: start / ONE_MILLISECOND,
-            max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
-          },
-        },
-      ],
-      yAxes: [
-        {
-          id: 'y-bar',
-          position: 'left',
-          stacked: true,
-          scaleLabel: {
-            display: true,
-            labelString: `Number of requests(/${intervalUnit.interval})`,
-          },
-          ticks: {
-            beginAtZero: true,
-            min: minData,
-            max: maxDataB,
-            callback: value => {
-              return `${value}`;
-            },
-          },
-        },
-        {
-          id: 'y-scat',
-          position: 'right',
-          scaleLabel: {
-            display: true,
-            labelString: `${statusKey}`,
-          },
-          ticks: {
-            beginAtZero: true,
-            min: minData,
-            max: maxDataS,
-          },
-        },
-      ],
-    },
-  };
+  // const graphOption = {
+  //   legend: {
+  //     display: true,
+  //     labels: {
+  //       filter: items => {
+  //         return operationNames.indexOf(items.text) !== -1;
+  //       },
+  //     },
+  //   },
+  //   scales: {
+  //     xAxes: [
+  //       {
+  //         id: 'x-bar',
+  //         stacked: true,
+  //         scaleLabel: {
+  //           display: true,
+  //           labelString: xLabel,
+  //         },
+  //       },
+  //       {
+  //         id: 'x-scat',
+  //         scaleLabel: {
+  //           display: false,
+  //         },
+  //         type: 'time',
+  //         time: {
+  //           parser: UnitKeeper[intervalUnit.unit].format,
+  //         },
+  //         ticks: {
+  //           source: 'labels',
+  //           min: start / ONE_MILLISECOND,
+  //           max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
+  //         },
+  //       },
+  //     ],
+  //     yAxes: [
+  //       {
+  //         id: 'y-bar',
+  //         position: 'left',
+  //         stacked: true,
+  //         scaleLabel: {
+  //           display: true,
+  //           labelString: `Number of requests(/${intervalUnit.interval})`,
+  //         },
+  //         ticks: {
+  //           beginAtZero: true,
+  //           min: minData,
+  //           max: maxDataB,
+  //           callback: value => {
+  //             return `${value}`;
+  //           },
+  //         },
+  //       },
+  //       {
+  //         id: 'y-scat',
+  //         position: 'right',
+  //         scaleLabel: {
+  //           display: true,
+  //           labelString: `${statusKey}`,
+  //         },
+  //         ticks: {
+  //           beginAtZero: true,
+  //           min: minData,
+  //           max: maxDataS,
+  //         },
+  //       },
+  //     ],
+  //   },
+  // };
   console.log(graphData);
-  console.log(graphOption);
-  return (<div> <p2>hello world!!</p2></div>);
-  // return (
-  //    <div className="ResultGraph">
-  //      <Bar data={graphData} options={graphOption} />
-  //    </div>
-  //  );
+  // console.log(graphOption);
+  // return (<div> <p2>hello world!!</p2></div>); options={graphOption}
+  return (
+     <div className="ResultGraph">
+       <Bar data={graphData}  />
+     </div>
+   );
 }
 
 ResultGraphImpl.propTypes = {
