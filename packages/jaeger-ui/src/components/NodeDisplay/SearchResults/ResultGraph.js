@@ -161,41 +161,41 @@ function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
 function getStatusPlot(status, yPlop) {
   const statusData = [];
   const missingData = [];
-  statusData.push(
-      {
-        operationName: "test",
-        x: 164035633771,
-        y: 0.5,
-      });
-  missingData.push(
-      {
-        operationName: "test2",
-        x: 164035640000,
-        y: 1,
-      });
-  // const statusFlag = yPlop === 'status';
+  // statusData.push(
+  //     {
+  //       operationName: "test",
+  //       x: 164035633771,
+  //       y: 0.5,
+  //     });
+  // missingData.push(
+  //     {
+  //       operationName: "test2",
+  //       x: 164035640000,
+  //       y: 1,
+  //     });
+  const statusFlag = yPlop === 'status';
   let maxData = -Infinity;
 
-  // status.forEach(stPart => {
-  //   if (stPart.isOn) {
-  //     const index = [].concat(stPart.keys).indexOf(yPlop);
-  //     if (index >= 0) {
-  //       const value = statusFlag ? 1 : parseInt(stPart.values[index], 10);
-  //       statusData.push({
-  //         operationName: stPart.operationName,
-  //         x: stPart.timestamp / ONE_MILLISECOND,
-  //         y: value,
-  //       });
-  //       if (maxData < value) maxData = value;
-  //     }
-  //   } else {
-  //     missingData.push({
-  //       operationName: stPart.operationName,
-  //       x: stPart.timestamp / ONE_MILLISECOND,
-  //       y: 0,
-  //     });
-  //   }
-  // });
+  status.forEach(stPart => {
+    if (stPart.isOn) {
+      const index = [].concat(stPart.keys).indexOf(yPlop);
+      if (index >= 0) {
+        const value = statusFlag ? 1 : parseInt(stPart.values[index], 10);
+        statusData.push({
+          operationName: stPart.operationName,
+          x: stPart.timestamp / ONE_MILLISECOND,
+          y: value,
+        });
+        if (maxData < value) maxData = value;
+      }
+    } else {
+      missingData.push({
+        operationName: stPart.operationName,
+        x: stPart.timestamp / ONE_MILLISECOND,
+        y: 0,
+      });
+    }
+  });
 
   const datasets = [
     {
