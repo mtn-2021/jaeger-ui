@@ -248,7 +248,7 @@ function ResultGraphImpl(props) {
     maxDataB = structure.maxData;
     maxDataS = statusData.maxData;
   } else {
-    // lookback = '1h';
+    lookback = '1h';
     // const structure = getLabelsAndData(
     //   lookback,
     //   new Date() * 1000 - getUintTime(lookback),
