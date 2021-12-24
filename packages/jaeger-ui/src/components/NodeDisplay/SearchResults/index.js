@@ -158,7 +158,7 @@ export class SearchResultImpl extends React.PureComponent {
           {/*  operationNames={tableData.operations} */}
           {/*  statusKey={selectedKey} */}
           {/*  graphMenu={selectedMenu} */}
-          {/* />*/}
+          {/* /> */}
         </div>
         <div className="SearchResults--tables">
           <Table columns={columns} dataSource={data} />
