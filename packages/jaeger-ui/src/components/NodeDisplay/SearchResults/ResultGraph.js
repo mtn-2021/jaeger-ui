@@ -15,7 +15,7 @@
 import React from 'react';
 import dimensions from 'react-dimensions';
 import { Bar } from 'react-chartjs-2';
-// import moment from 'moment';
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import { ONE_MILLISECOND } from '../../../utils/date';
 
@@ -29,13 +29,13 @@ function getUintTime(time) {
   return parseInt(time, 10) * units[unit] * 1000 * 1000;
 }
 
-// const colors = {
-//   0: 'rgba(30, 144, 255, 1)',
-//   1: 'rgba(144, 101, 224, 1)',
-//   2: 'rgba(206, 101, 224, 1)',
-//   3: 'rgba(160, 44, 47, 1)',
-//   4: 'rgba(210, 83, 44, 1)',
-// };
+const colors = {
+  0: 'rgba(30, 144, 255, 1)',
+  1: 'rgba(144, 101, 224, 1)',
+  2: 'rgba(206, 101, 224, 1)',
+  3: 'rgba(160, 44, 47, 1)',
+  4: 'rgba(210, 83, 44, 1)',
+};
 
 const UnitKeeper = {
   m: { format: '~hh:mm a', half: '30s', full: 'minute' },
@@ -82,81 +82,81 @@ function getIntervalTime(lookback) {
   };
 }
 
-// function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
-//   const lookbackTime = getUintTime(lookback);
-//   const interval = getIntervalTime(lookback);
-//   const format = UnitKeeper[interval.unit].format;
-//   const intervalTime = interval.time;
-//   const length = lookbackTime / intervalTime;
-//   let requestLength = request.length - 1;
-//   let time = start;
-//   const labels = [];
-//   const data = [];
-//   const dataCount = [];
-//
-//   for (let i = 0; i <= length - 1; i++) {
-//     const dataPart = [];
-//     operationNames.forEach(operationName => {
-//       dataPart[operationName] = 0;
-//     });
-//     let count = 0;
-//
-//     for (let l = requestLength; l >= 0; l--) {
-//       if (request[l].startTime >= time && request[l].startTime < time + intervalTime) {
-//         if (graphMenu === 'allRequest') {
-//           count++;
-//           dataPart[request[l].operationName] += 1;
-//         } else if (graphMenu === 'failedRequest' && request[l].failed !== null) {
-//           count++;
-//           dataPart[request[l].operationName] += 1;
-//         } else if (graphMenu === 'successRequest' && request[l].failed === null) {
-//           count++;
-//           dataPart[request[l].operationName] += 1;
-//         }
-//       } else {
-//         requestLength = l;
-//         break;
-//       }
-//     }
-//
-//     data.push(count);
-//     for (let op = 0; op < operationNames.length; op++) {
-//       const tmpCount = [].concat(dataCount[operationNames[op]]);
-//       tmpCount.push(dataPart[operationNames[op]]);
-//       dataCount[operationNames[op]] = tmpCount;
-//     }
-//
-//     time += intervalTime;
-//     const label = moment(time / ONE_MILLISECOND)
-//       .format(format)
-//       .split(' ');
-//     labels.push(label);
-//   }
-//
-//   let datasets = operationNames.map((operationName, index) => ({
-//     type: 'bar',
-//     data: [].concat(dataCount[operationName]).filter(v => !(v === undefined)),
-//     label: operationName,
-//     backgroundColor: colors[index],
-//     yAxisID: 'y-bar',
-//     xAxisID: 'x-bar',
-//   }));
-//   if (!(datasets && datasets.length > 0))
-//     datasets = [
-//       {
-//         type: 'bar',
-//         data,
-//         label: 'Number of request',
-//         yAxisID: 'y-bar',
-//         xAxisID: 'x-bar',
-//       },
-//     ];
-//
-//   const max = data.reduce((a, b) => Math.max(a, b));
-//   const maxData = 5 - (max % 5) + max;
-//
-//   return { labels, datasets, maxData, interval };
-// }
+function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
+  const lookbackTime = getUintTime(lookback);
+  const interval = getIntervalTime(lookback);
+  const format = UnitKeeper[interval.unit].format;
+  const intervalTime = interval.time;
+  const length = lookbackTime / intervalTime;
+  let requestLength = request.length - 1;
+  let time = start;
+  const labels = [];
+  const data = [];
+  const dataCount = [];
+
+  for (let i = 0; i <= length - 1; i++) {
+    const dataPart = [];
+    operationNames.forEach(operationName => {
+      dataPart[operationName] = 0;
+    });
+    let count = 0;
+
+    for (let l = requestLength; l >= 0; l--) {
+      if (request[l].startTime >= time && request[l].startTime < time + intervalTime) {
+        if (graphMenu === 'allRequest') {
+          count++;
+          dataPart[request[l].operationName] += 1;
+        } else if (graphMenu === 'failedRequest' && request[l].failed !== null) {
+          count++;
+          dataPart[request[l].operationName] += 1;
+        } else if (graphMenu === 'successRequest' && request[l].failed === null) {
+          count++;
+          dataPart[request[l].operationName] += 1;
+        }
+      } else {
+        requestLength = l;
+        break;
+      }
+    }
+
+    data.push(count);
+    for (let op = 0; op < operationNames.length; op++) {
+      const tmpCount = [].concat(dataCount[operationNames[op]]);
+      tmpCount.push(dataPart[operationNames[op]]);
+      dataCount[operationNames[op]] = tmpCount;
+    }
+
+    time += intervalTime;
+    const label = moment(time / ONE_MILLISECOND)
+      .format(format)
+      .split(' ');
+    labels.push(label);
+  }
+
+  let datasets = operationNames.map((operationName, index) => ({
+    type: 'bar',
+    data: [].concat(dataCount[operationName]).filter(v => !(v === undefined)),
+    label: operationName,
+    backgroundColor: colors[index],
+    yAxisID: 'y-bar',
+    xAxisID: 'x-bar',
+  }));
+  if (!(datasets && datasets.length > 0))
+    datasets = [
+      {
+        type: 'bar',
+        data,
+        label: 'Number of request',
+        yAxisID: 'y-bar',
+        xAxisID: 'x-bar',
+      },
+    ];
+
+  const max = data.reduce((a, b) => Math.max(a, b));
+  const maxData = 5 - (max % 5) + max;
+
+  return { labels, datasets, maxData, interval };
+}
 
 // function getStatusPlot(status, yPlop) {
 //   const statusData = [];
@@ -241,26 +241,26 @@ function ResultGraphImpl(props) {
   } else {
     lookback = '1h';
     console.log("before getData");
-    // getLabelsAndData(
-    //   lookback,
-    //   new Date() * 1000 - getUintTime(lookback),
-    //   request,
-    //   operationNames,
-    //   graphMenu
-    // );
-    const structure = {
-      labels: ["1","2","3","4","5"],
-      datasets: [
-          {
-            type: 'bar',
-            data: [1,2,3,4,5],
-            label: 'Number of request',
-            backgroundColor: 'rgba(30, 144, 255, 1)',
-            yAxisID: 'y-bar',
-            xAxisID: 'x-bar',
-          },
-      ]
-    }
+    const structure = getLabelsAndData(
+      lookback,
+      new Date() * 1000 - getUintTime(lookback),
+      request,
+      operationNames,
+      graphMenu
+    );
+    // const structure = {
+    //   labels: ["1","2","3","4","5"],
+    //   datasets: [
+    //       {
+    //         type: 'bar',
+    //         data: [1,2,3,4,5],
+    //         label: 'Number of request',
+    //         backgroundColor: 'rgba(30, 144, 255, 1)',
+    //         yAxisID: 'y-bar',
+    //         xAxisID: 'x-bar',
+    //       },
+    //   ]
+    // }
 
     console.log("before getPlot");
     // const statusData = getStatusPlot(status, statusKey);
@@ -296,7 +296,7 @@ function ResultGraphImpl(props) {
     labels = structure.labels;
     datasets = [].concat(statusData.datasets).concat(structure.datasets);
     xLabel = 'Last 1 hour';
-    intervalUnit = getIntervalTime(lookback); // structure.interval;
+    intervalUnit =  structure.interval;
     minData = 0;
     maxDataB = 10;
     maxDataS = 1;
