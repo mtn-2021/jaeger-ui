@@ -236,9 +236,6 @@ function ResultGraphImpl(props) {
   let minData;
   let maxDataB;
   let maxDataS;
-  console.log("before if");
-  console.log(lb);
-  console.log(graphMenu);
   if ((status && status.length > 0) || (request && request.length > 0)) {
     lookback = lb;
     const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
@@ -252,7 +249,6 @@ function ResultGraphImpl(props) {
     maxDataS = statusData.maxData;
   } else {
     lookback = '1h';
-    console.log("before getData");
     const structure = getLabelsAndData(
       lookback,
       new Date() * 1000 - getUintTime(lookback),
@@ -273,8 +269,6 @@ function ResultGraphImpl(props) {
     //       },
     //   ]
     // }
-
-    console.log("before getPlot");
     const statusData = getStatusPlot(status, statusKey);
     // const statusData = {
     //   datasets: [{
@@ -313,7 +307,6 @@ function ResultGraphImpl(props) {
     maxDataB = 10;
     maxDataS = 1;
   }
-  console.log("after if");
 
   const graphData = {
     labels,
@@ -388,10 +381,8 @@ function ResultGraphImpl(props) {
       ],
     },
   };
-  console.log("after graph");
   console.log(graphData);
   console.log(graphOption);
-  // return ( <div> <p2> Hello World!!!</p2> </div>);
   return (
      <div className="ResultGraph">
        <Bar data={graphData} options={graphOption} />
