@@ -257,7 +257,7 @@ function ResultGraphImpl(props) {
     //   graphMenu
     // );
     const structure = {
-      interval: '~MM/DD hh:mm a',
+      interval: {format: '~MM/DD hh:mm a'},
       labels: ["1","2","3","4","5"],
       datasets: [
           {
