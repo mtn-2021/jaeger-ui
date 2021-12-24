@@ -215,129 +215,160 @@ function getStatusPlot(status, yPlop) {
 }
 
 function ResultGraphImpl(props) {
-  const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
-  let lookback;
-  let labels;
-  let datasets;
-  let xLabel;
-  let intervalUnit;
-  let minData;
-  let maxDataB;
-  let maxDataS;
-  console.log("before if");
-  if ((status && status.length > 0) || (request && request.length > 0)) {
-    lookback = lb;
-    const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
-    const statusData = getStatusPlot(status, statusKey);
-    labels = structure.labels;
-    datasets = [].concat(statusData.datasets).concat(structure.datasets);
-    xLabel = `Last ${parseInt(lookback, 10)} ${UnitKeeper[lookback.substr(-1)].full}`;
-    intervalUnit = structure.interval;
-    minData = 0;
-    maxDataB = structure.maxData;
-    maxDataS = statusData.maxData;
-  } else {
-    lookback = '1h';
-    console.log("before getData");
-    const structure = getLabelsAndData(
-      lookback,
-      new Date() * 1000 - getUintTime(lookback),
-      request,
-      operationNames,
-      graphMenu
-    );
-    console.log("before getPlot");
-    const statusData = getStatusPlot(status, statusKey);
-    labels = structure.labels;
-    datasets = [].concat(statusData.datasets).concat(structure.datasets);
-    xLabel = 'Last 1 hour';
-    intervalUnit = structure.interval;
-    minData = 0;
-    maxDataB = 10;
-    maxDataS = 1;
-  }
+  console.log(props);
+  // const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
+  // let lookback;
+  // let labels;
+  // let datasets;
+  // let xLabel;
+  // let intervalUnit;
+  // let minData;
+  // let maxDataB;
+  // let maxDataS;
+  // console.log("before if");
+  // if ((status && status.length > 0) || (request && request.length > 0)) {
+  //   lookback = lb;
+  //   const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
+  //   const statusData = getStatusPlot(status, statusKey);
+  //   labels = structure.labels;
+  //   datasets = [].concat(statusData.datasets).concat(structure.datasets);
+  //   xLabel = `Last ${parseInt(lookback, 10)} ${UnitKeeper[lookback.substr(-1)].full}`;
+  //   intervalUnit = structure.interval;
+  //   minData = 0;
+  //   maxDataB = structure.maxData;
+  //   maxDataS = statusData.maxData;
+  // } else {
+  //   lookback = '1h';
+  //   console.log("before getData");
+  //   const structure = getLabelsAndData(
+  //     lookback,
+  //     new Date() * 1000 - getUintTime(lookback),
+  //     request,
+  //     operationNames,
+  //     graphMenu
+  //   );
+  //   console.log("before getPlot");
+  //   const statusData = getStatusPlot(status, statusKey);
+  //   labels = structure.labels;
+  //   datasets = [].concat(statusData.datasets).concat(structure.datasets);
+  //   xLabel = 'Last 1 hour';
+  //   intervalUnit = structure.interval;
+  //   minData = 0;
+  //   maxDataB = 10;
+  //   maxDataS = 1;
+  // }
   console.log("after if");
 
-  const graphData = {
-    labels,
-    datasets,
-  };
-  const graphOption = {
-    legend: {
-      display: true,
-      labels: {
-        filter: items => {
-          return operationNames.indexOf(items.text) !== -1;
-        },
+  const graphData = {labels: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月'],
+    datasets: [
+      {
+        label: 'Dataset',
+        // データの値
+        data: [65, 59, 80, 81, 56, 55, 40],
+        // グラフの背景色
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 205, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(201, 203, 207, 0.2)',
+        ],
+        // グラフの枠線の色
+        borderColor: [
+          'rgb(255, 99, 132)',
+          'rgb(255, 159, 64)',
+          'rgb(255, 205, 86)',
+          'rgb(75, 192, 192)',
+          'rgb(54, 162, 235)',
+          'rgb(153, 102, 255)',
+          'rgb(201, 203, 207)',
+        ],
+        // グラフの枠線の太さ
+        borderWidth: 1,
       },
-    },
-    scales: {
-      xAxes: [
-        {
-          id: 'x-bar',
-          stacked: true,
-          scaleLabel: {
-            display: true,
-            labelString: xLabel,
-          },
-        },
-        {
-          id: 'x-scat',
-          scaleLabel: {
-            display: false,
-          },
-          type: 'time',
-          time: {
-            parser: UnitKeeper[intervalUnit.unit].format,
-          },
-          ticks: {
-            source: 'labels',
-            min: start / ONE_MILLISECOND,
-            max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
-          },
-        },
-      ],
-      yAxes: [
-        {
-          id: 'y-bar',
-          position: 'left',
-          stacked: true,
-          scaleLabel: {
-            display: true,
-            labelString: `Number of requests(/${intervalUnit.interval})`,
-          },
-          ticks: {
-            beginAtZero: true,
-            min: minData,
-            max: maxDataB,
-            callback: value => {
-              return `${value}`;
-            },
-          },
-        },
-        {
-          id: 'y-scat',
-          position: 'right',
-          scaleLabel: {
-            display: true,
-            labelString: `${statusKey}`,
-          },
-          ticks: {
-            beginAtZero: true,
-            min: minData,
-            max: maxDataS,
-          },
-        },
-      ],
-    },
-  };
+    ],};
+  // const graphData = {
+  //   labels,
+  //   datasets,
+  // };
+  // const graphOption = {
+  //   legend: {
+  //     display: true,
+  //     labels: {
+  //       filter: items => {
+  //         return operationNames.indexOf(items.text) !== -1;
+  //       },
+  //     },
+  //   },
+  //   scales: {
+  //     xAxes: [
+  //       {
+  //         id: 'x-bar',
+  //         stacked: true,
+  //         scaleLabel: {
+  //           display: true,
+  //           labelString: xLabel,
+  //         },
+  //       },
+  //       {
+  //         id: 'x-scat',
+  //         scaleLabel: {
+  //           display: false,
+  //         },
+  //         type: 'time',
+  //         time: {
+  //           parser: UnitKeeper[intervalUnit.unit].format,
+  //         },
+  //         ticks: {
+  //           source: 'labels',
+  //           min: start / ONE_MILLISECOND,
+  //           max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
+  //         },
+  //       },
+  //     ],
+  //     yAxes: [
+  //       {
+  //         id: 'y-bar',
+  //         position: 'left',
+  //         stacked: true,
+  //         scaleLabel: {
+  //           display: true,
+  //           labelString: `Number of requests(/${intervalUnit.interval})`,
+  //         },
+  //         ticks: {
+  //           beginAtZero: true,
+  //           min: minData,
+  //           max: maxDataB,
+  //           callback: value => {
+  //             return `${value}`;
+  //           },
+  //         },
+  //       },
+  //       {
+  //         id: 'y-scat',
+  //         position: 'right',
+  //         scaleLabel: {
+  //           display: true,
+  //           labelString: `${statusKey}`,
+  //         },
+  //         ticks: {
+  //           beginAtZero: true,
+  //           min: minData,
+  //           max: maxDataS,
+  //         },
+  //       },
+  //     ],
+  //   },
+  // };
   console.log("after graph");
   console.log(graphData);
-  console.log(graphOption);
+  // console.log(graphOption); options={graphOption}
   // return ( <div> <p2> Hello World!!!</p2> </div>);
   return (
      <div className="ResultGraph">
-       <Bar data={graphData} />
+       <Bar data={graphData}  />
      </div>
    );
 }
