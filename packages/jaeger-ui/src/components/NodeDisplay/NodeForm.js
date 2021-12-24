@@ -34,7 +34,7 @@ const AdaptedVirtualSelect = reduxFormFieldAdapter({
   onChangeAdapter: option => (option ? option.value : null),
 });
 
-export function lookbackToTimestamp(lookback, from) {
+function lookbackToTimestamp(lookback, from) {
   const unit = lookback.substr(-1);
   return (
     moment(from)
@@ -53,7 +53,7 @@ export function lookbackToTimestamp(lookback, from) {
 //   return parseInt(interval, 10) * units[unit] * 1000 * 1000;
 // }
 
-export function submitForm(fields, fetchRequestToNode) {
+function submitForm(fields, fetchRequestToNode) {
   const { node, service, lookback } = fields;
 
   let unit = null;
@@ -205,4 +205,4 @@ export default connect(
   reduxForm({
     form: 'nodesSideBar',
   })(NodeFormImpl)
-);
+); // このあたりで default undefined
