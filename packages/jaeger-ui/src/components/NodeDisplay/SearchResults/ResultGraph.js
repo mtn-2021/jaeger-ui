@@ -29,13 +29,13 @@ function getUintTime(time) {
   return parseInt(time, 10) * units[unit] * 1000 * 1000;
 }
 
-const colors = {
-  0: 'rgba(30, 144, 255, 1)',
-  1: 'rgba(144, 101, 224, 1)',
-  2: 'rgba(206, 101, 224, 1)',
-  3: 'rgba(160, 44, 47, 1)',
-  4: 'rgba(210, 83, 44, 1)',
-};
+// const colors = {
+//   0: 'rgba(30, 144, 255, 1)',
+//   1: 'rgba(144, 101, 224, 1)',
+//   2: 'rgba(206, 101, 224, 1)',
+//   3: 'rgba(160, 44, 47, 1)',
+//   4: 'rgba(210, 83, 44, 1)',
+// };
 
 const UnitKeeper = {
   m: { format: '~hh:mm a', half: '30s', full: 'minute' },
@@ -43,44 +43,44 @@ const UnitKeeper = {
   d: { format: '~MM/DD', underUnit: 'h', half: '12h', full: 'day' },
 };
 
-function getIntervalTime(lookback) {
-  const unit = lookback.substr(-1);
-  const vol = parseInt(lookback, 10);
-  const interval = Math.floor(vol / 10);
-  if (interval !== 0) {
-    return {
-      time: getUintTime(interval + unit),
-      unit,
-      interval: interval + unit,
-    };
-  }
-  if (vol > 4) {
-    return {
-      time: getUintTime(UnitKeeper[unit].half),
-      unit: UnitKeeper[unit].underUnit,
-      interval: UnitKeeper[unit].half,
-    };
-  }
-  if (unit === 'd') {
-    return {
-      time: getUintTime(vol * 2 + UnitKeeper[unit].underUnit),
-      unit: UnitKeeper[unit].underUnit,
-      interval: vol * 2 + UnitKeeper[unit].underUnit,
-    };
-  }
-  if (unit === 'h') {
-    return {
-      time: getUintTime(vol * 5 + UnitKeeper[unit].underUnit),
-      unit: UnitKeeper[unit].underUnit,
-      interval: vol * 5 + UnitKeeper[unit].underUnit,
-    };
-  }
-  return {
-    time: getUintTime(1 + unit),
-    unit,
-    interval: 1 + unit,
-  };
-}
+// function getIntervalTime(lookback) {
+//   const unit = lookback.substr(-1);
+//   const vol = parseInt(lookback, 10);
+//   const interval = Math.floor(vol / 10);
+//   if (interval !== 0) {
+//     return {
+//       time: getUintTime(interval + unit),
+//       unit,
+//       interval: interval + unit,
+//     };
+//   }
+//   if (vol > 4) {
+//     return {
+//       time: getUintTime(UnitKeeper[unit].half),
+//       unit: UnitKeeper[unit].underUnit,
+//       interval: UnitKeeper[unit].half,
+//     };
+//   }
+//   if (unit === 'd') {
+//     return {
+//       time: getUintTime(vol * 2 + UnitKeeper[unit].underUnit),
+//       unit: UnitKeeper[unit].underUnit,
+//       interval: vol * 2 + UnitKeeper[unit].underUnit,
+//     };
+//   }
+//   if (unit === 'h') {
+//     return {
+//       time: getUintTime(vol * 5 + UnitKeeper[unit].underUnit),
+//       unit: UnitKeeper[unit].underUnit,
+//       interval: vol * 5 + UnitKeeper[unit].underUnit,
+//     };
+//   }
+//   return {
+//     time: getUintTime(1 + unit),
+//     unit,
+//     interval: 1 + unit,
+//   };
+// }
 
 // function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
 //   const lookbackTime = getUintTime(lookback);
