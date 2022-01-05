@@ -226,7 +226,7 @@ function getUintTime(time) {
 //   return { datasets, maxData };
 // }
 
-function ResultGraphImpl(props) {
+export function ResultGraphImpl(props) {
   const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
   let lookback;
   let labels;
