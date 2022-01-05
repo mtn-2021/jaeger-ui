@@ -14,7 +14,7 @@
 
 import React from 'react';
 // import dimensions from 'react-dimensions';
-// import { Bar }  from 'react-chartjs-2';
+import { Bar }  from 'react-chartjs-2';
 // import moment from 'moment';
 import PropTypes from 'prop-types';
 // import { ONE_MILLISECOND } from '../../../utils/date';
@@ -411,12 +411,12 @@ export function ResultGraphImpl(props) {
   console.log(getUintTime(lookback));
   console.log(graphData);
   // console.log(graphOption);
-  return (<div> <p2>hello world!!</p2></div>); // options={graphOption}
-  // return (
-  //    <div className="ResultGraph">
-  //      <Bar data={graphData} />
-  //    </div>
-  //  );
+  // return (<div> <p2>hello world!!</p2></div>); // options={graphOption}
+  return (
+     <div className="ResultGraph">
+       <Bar data={graphData} />
+     </div>
+   );
 }
 
 ResultGraphImpl.propTypes = {
