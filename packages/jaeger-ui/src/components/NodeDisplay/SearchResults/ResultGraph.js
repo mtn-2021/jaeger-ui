@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// import React from 'react';
+import React from 'react';
 // import dimensions from 'react-dimensions';
 import { Bar }  from 'react-chartjs-2';
 // import moment from 'moment';
@@ -418,9 +418,7 @@ function ResultGraphImpl(props) {
   // console.log(graphOption);
   // return (<div> <p2>hello world!!</p2></div>); // options={graphOption}
   return (
-     <div className="ResultGraph">
        <Bar data={graphData} />
-     </div>
    );
 }
 
