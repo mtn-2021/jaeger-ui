@@ -385,10 +385,10 @@ function ResultGraphImpl(props) {
   };
   console.log(graphData);
   console.log(graphOption);
-  // return (<div> <p2>hello world!!</p2></div>);
+  // return (<div> <p2>hello world!!</p2></div>); options={graphOption}
   return (
      <div className="ResultGraph">
-       <Bar data={graphData} options={graphOption} />
+       <Bar data={graphData}  />
      </div>
    );
 }
