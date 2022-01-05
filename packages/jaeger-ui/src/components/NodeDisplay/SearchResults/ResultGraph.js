@@ -161,18 +161,18 @@ function getUintTime(time) {
 // function getStatusPlot(status, yPlop) {
 //   const statusData = [];
 //   const missingData = [];
-//   // statusData.push(
-//   //     {
-//   //       operationName: "test",
-//   //       x: 164035633771,
-//   //       y: 0.5,
-//   //     });
-//   // missingData.push(
-//   //     {
-//   //       operationName: "test2",
-//   //       x: 164035640000,
-//   //       y: 1,
-//   //     });
+//    statusData.push(
+//        {
+//          operationName: "test",
+//          x: 164035633771,
+//          y: 0.5,
+//        });
+//    missingData.push(
+//        {
+//          operationName: "test2",
+//          x: 164035640000,
+//          y: 1,
+//        });
 //   const statusFlag = yPlop === 'status';
 //   let maxData = -Infinity;
 //
@@ -411,12 +411,12 @@ export function ResultGraphImpl(props) {
   console.log(getUintTime(lookback));
   console.log(graphData);
   // console.log(graphOption);
-  // return (<div> <p2>hello world!!</p2></div>); options={graphOption}
-  return (
-     <div className="ResultGraph">
-       <Bar data={graphData} />
-     </div>
-   );
+  return (<div> <p2>hello world!!</p2></div>); // options={graphOption}
+  // return (
+  //    <div className="ResultGraph">
+  //      <Bar data={graphData} />
+  //    </div>
+  //  );
 }
 
 ResultGraphImpl.propTypes = {
