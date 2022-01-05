@@ -19,15 +19,15 @@ import { Bar }  from 'react-chartjs-2';
 import PropTypes from 'prop-types';
 // import { ONE_MILLISECOND } from '../../../utils/date';
 
-function getUintTime(time) {
-  const unit = time.substr(-1);
-  const units = {
-    m: 60,
-    h: 60 * 60,
-    d: 60 * 60 * 24,
-  };
-  return parseInt(time, 10) * units[unit] * 1000 * 1000;
-}
+// function getUintTime(time) {
+//   const unit = time.substr(-1);
+//   const units = {
+//     m: 60,
+//     h: 60 * 60,
+//     d: 60 * 60 * 24,
+//   };
+//   return parseInt(time, 10) * units[unit] * 1000 * 1000;
+// }
 
 // const colors = {
 //   0: 'rgba(30, 144, 255, 1)',
@@ -418,7 +418,7 @@ function ResultGraphImpl(props) {
   //     ],
   //   },
   // };
-  console.log(getUintTime(lookback));
+  // console.log(getUintTime(lookback));
   console.log(graphData);
   // console.log(graphOption);
   // return (<div> <p2>hello world!!</p2></div>); // options={graphOption}
