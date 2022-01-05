@@ -228,7 +228,7 @@ function getUintTime(time) {
 
 function ResultGraphImpl(props) {
   const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
-  let lookback;
+  let lookback = '1h';
   // let labels;
   // let datasets;
   let xLabel;
@@ -236,6 +236,11 @@ function ResultGraphImpl(props) {
   let minData;
   let maxDataB;
   let maxDataS;
+  xLabel = 'Last 1 hour';
+  intervalUnit = {unit: 'h'}; // structure.interval;
+  minData = 0;
+  maxDataB = 10;
+  maxDataS = 1;
   console.log(lb,graphMenu,start,operationNames);
   if ((status && status.length > 0) || (request && request.length > 0)) {
     // lookback = lb;
