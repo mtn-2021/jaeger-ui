@@ -17,7 +17,7 @@ import React from 'react';
 import { Bar }  from 'react-chartjs-2';
 // import moment from 'moment';
 import PropTypes from 'prop-types';
-import { ONE_MILLISECOND } from '../../../utils/date';
+// import { ONE_MILLISECOND } from '../../../utils/date';
 
 function getUintTime(time) {
   const unit = time.substr(-1);
@@ -37,11 +37,11 @@ function getUintTime(time) {
 //   4: 'rgba(210, 83, 44, 1)',
 // };
 
-const UnitKeeper = {
-  m: { format: '~hh:mm a', half: '30s', full: 'minute' },
-  h: { format: '~MM/DD hh:mm a', underUnit: 'm', half: '30m', full: 'hour' },
-  d: { format: '~MM/DD', underUnit: 'h', half: '12h', full: 'day' },
-};
+// const UnitKeeper = {
+//   m: { format: '~hh:mm a', half: '30s', full: 'minute' },
+//   h: { format: '~MM/DD hh:mm a', underUnit: 'm', half: '30m', full: 'hour' },
+//   d: { format: '~MM/DD', underUnit: 'h', half: '12h', full: 'day' },
+// };
 
 // function getIntervalTime(lookback) {
 //   const unit = lookback.substr(-1);
@@ -314,81 +314,81 @@ function ResultGraphImpl(props) {
     labels,
     datasets,
   };
-  const graphOption = {
-    legend: {
-      display: true,
-      labels: {
-        filter: items => {
-          return operationNames.indexOf(items.text) !== -1;
-        },
-      },
-    },
-    scales: {
-      xAxes: [
-        {
-          id: 'x-bar',
-          stacked: true,
-          scaleLabel: {
-            display: true,
-            labelString: xLabel,
-          },
-        },
-        {
-          id: 'x-scat',
-          scaleLabel: {
-            display: false,
-          },
-          type: 'time',
-          time: {
-            parser: UnitKeeper[intervalUnit.unit].format,
-          },
-          ticks: {
-            source: 'labels',
-            min: start / ONE_MILLISECOND,
-            max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
-          },
-        },
-      ],
-      yAxes: [
-        {
-          id: 'y-bar',
-          position: 'left',
-          stacked: true,
-          scaleLabel: {
-            display: true,
-            labelString: `Number of requests(/${intervalUnit.interval})`,
-          },
-          ticks: {
-            beginAtZero: true,
-            min: minData,
-            max: maxDataB,
-            callback: value => {
-              return `${value}`;
-            },
-          },
-        },
-        {
-          id: 'y-scat',
-          position: 'right',
-          scaleLabel: {
-            display: true,
-            labelString: `${statusKey}`,
-          },
-          ticks: {
-            beginAtZero: true,
-            min: minData,
-            max: maxDataS,
-          },
-        },
-      ],
-    },
-  };
+  // const graphOption = {
+  //   legend: {
+  //     display: true,
+  //     labels: {
+  //       filter: items => {
+  //         return operationNames.indexOf(items.text) !== -1;
+  //       },
+  //     },
+  //   },
+  //   scales: {
+  //     xAxes: [
+  //       {
+  //         id: 'x-bar',
+  //         stacked: true,
+  //         scaleLabel: {
+  //           display: true,
+  //           labelString: xLabel,
+  //         },
+  //       },
+  //       {
+  //         id: 'x-scat',
+  //         scaleLabel: {
+  //           display: false,
+  //         },
+  //         type: 'time',
+  //         time: {
+  //           parser: UnitKeeper[intervalUnit.unit].format,
+  //         },
+  //         ticks: {
+  //           source: 'labels',
+  //           min: start / ONE_MILLISECOND,
+  //           max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
+  //         },
+  //       },
+  //     ],
+  //     yAxes: [
+  //       {
+  //         id: 'y-bar',
+  //         position: 'left',
+  //         stacked: true,
+  //         scaleLabel: {
+  //           display: true,
+  //           labelString: `Number of requests(/${intervalUnit.interval})`,
+  //         },
+  //         ticks: {
+  //           beginAtZero: true,
+  //           min: minData,
+  //           max: maxDataB,
+  //           callback: value => {
+  //             return `${value}`;
+  //           },
+  //         },
+  //       },
+  //       {
+  //         id: 'y-scat',
+  //         position: 'right',
+  //         scaleLabel: {
+  //           display: true,
+  //           labelString: `${statusKey}`,
+  //         },
+  //         ticks: {
+  //           beginAtZero: true,
+  //           min: minData,
+  //           max: maxDataS,
+  //         },
+  //       },
+  //     ],
+  //   },
+  // };
   console.log(graphData);
-  console.log(graphOption);
+  // console.log(graphOption);
   // return (<div> <p2>hello world!!</p2></div>); options={graphOption}
   return (
      <div className="ResultGraph">
-       <Bar data={graphData}  />
+       <Bar data={graphData} />
      </div>
    );
 }
