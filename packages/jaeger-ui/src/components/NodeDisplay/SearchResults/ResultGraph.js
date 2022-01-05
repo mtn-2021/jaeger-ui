@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import React from 'react';
+// import React from 'react';
 // import dimensions from 'react-dimensions';
 import { Bar }  from 'react-chartjs-2';
 // import moment from 'moment';
