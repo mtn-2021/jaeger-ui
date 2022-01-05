@@ -383,6 +383,7 @@ function ResultGraphImpl(props) {
   //     ],
   //   },
   // };
+  console.log(getUintTime(lookback));
   console.log(graphData);
   // console.log(graphOption);
   // return (<div> <p2>hello world!!</p2></div>); options={graphOption}
