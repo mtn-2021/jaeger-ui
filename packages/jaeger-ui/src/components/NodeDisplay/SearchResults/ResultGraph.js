@@ -348,16 +348,12 @@ export default function ResultGraphImpl(props) {
       },
     ],
   };
-  const config = {
-    type: 'bar',
-    data: graphData,
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
+  const graphOption = {
+    scales: {
+      y: {
+        beginAtZero: true
       }
-    },
+    }
   }
   // const graphOption = {
   //   legend: {
@@ -431,10 +427,10 @@ export default function ResultGraphImpl(props) {
   // console.log(getUintTime(lookback));
   console.log(graphData);
   // console.log(graphOption);
-  // return (<div> <p2>hello world!!</p2></div>); // options={graphOption}
+  // return (<div> <p2>hello world!!</p2></div>); //
   return (
       <div>
-        <Bar config={config} />
+        <Bar data={graphData} options={graphOption} />
       </div>
    );
 }
