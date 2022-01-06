@@ -226,7 +226,7 @@ import PropTypes from 'prop-types';
 //   return { datasets, maxData };
 // }
 
-function ResultGraphImpl(props) {
+export default function ResultGraphImpl(props) {
   const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
   let lookback = '1h';
   // let labels;
@@ -423,7 +423,9 @@ function ResultGraphImpl(props) {
   // console.log(graphOption);
   // return (<div> <p2>hello world!!</p2></div>); // options={graphOption}
   return (
-       <Bar data={graphData} />
+      <div>
+        <Bar data={graphData} />
+      </div>
    );
 }
 
@@ -448,4 +450,4 @@ ResultGraphImpl.defaultProps = {
 };
 
 // export { ResultGraphImpl };
-export default ResultGraphImpl;
+// export default ResultGraphImpl;
