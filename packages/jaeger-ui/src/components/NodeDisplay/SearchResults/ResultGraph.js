@@ -275,6 +275,8 @@ function ResultGraphImpl(props) {
       },
       xScat: {
         display: true,
+        min: `${start / ONE_MILLISECOND}`,
+        max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         // suggestedMin: `${start / ONE_MILLISECOND}`,
         // suggestedMax: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         type: 'time',
