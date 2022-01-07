@@ -187,7 +187,7 @@ function getStatusPlot(status, yPlop) {
 
   const datasets = [
     {
-      type: 'scatter',
+      type: 'bubble',
       data: statusData,
       label: yPlop,
       backgroundColor: `rgba(117, 219, 219,1)`,
@@ -195,7 +195,7 @@ function getStatusPlot(status, yPlop) {
       xAxisID: 'xScat',
     },
     {
-      type: 'scatter',
+      type: 'bubble',
       data: missingData,
       label: 'disConnect',
       backgroundColor: `rgba(255, 15, 43, 1)`,
@@ -276,7 +276,7 @@ function ResultGraphImpl(props) {
         max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         // suggestedMin: `${start / ONE_MILLISECOND}`,
         // suggestedMax: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
-        type: 'time',
+        // type: 'time',
         // time: {
           // parser: `${UnitKeeper[intervalUnit.unit].format}`,
           // min: `${start / ONE_MILLISECOND}`,
