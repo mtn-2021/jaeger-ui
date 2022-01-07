@@ -137,8 +137,8 @@ function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
     data: [].concat(dataCount[operationName]).filter(v => !(v === undefined)),
     label: operationName,
     backgroundColor: colors[index],
-    yAxisID: 'y-bar',
-    xAxisID: 'x-bar',
+    yAxisID: 'yBar',
+    xAxisID: 'xBar',
   }));
   if (!(datasets && datasets.length > 0))
     datasets = [
@@ -146,8 +146,8 @@ function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
         type: 'bar',
         data,
         label: 'Number of request',
-        yAxisID: 'y-bar',
-        xAxisID: 'x-bar',
+        yAxisID: 'yBar',
+        xAxisID: 'xBar',
       },
     ];
 
@@ -202,16 +202,16 @@ function getStatusPlot(status, yPlop) {
       data: statusData,
       label: yPlop,
       backgroundColor: `rgba(117, 219, 219,1)`,
-      yAxisID: 'y-scat',
-      xAxisID: 'x-scat',
+      yAxisID: 'yScat',
+      xAxisID: 'xScat',
     },
     {
       type: 'scatter',
       data: missingData,
       label: 'disConnect',
       backgroundColor: `rgba(255, 15, 43, 1)`,
-      yAxisID: 'y-scat',
-      xAxisID: 'x-scat',
+      yAxisID: 'yScat',
+      xAxisID: 'xScat',
     },
   ];
 
@@ -235,8 +235,6 @@ function ResultGraphImpl(props) {
   let minData = 0;
   let maxDataB = 10;
   let maxDataS = 1;
-  operationNames.push(xLabel);
-  // intervalUnit = {unit: 'h'}; // structure.interval;
   console.log(lb,graphMenu,start,operationNames);
   console.log(request, status, statusKey);
   if ((status && status.length > 0) || (request && request.length > 0)) {
@@ -343,7 +341,6 @@ function ResultGraphImpl(props) {
   const graphOption = {
     plugins: {
       legend: {
-        // display: true,
         labels: {
           filter: items => {
             return operationNames.indexOf(items.text) !== -1;
@@ -352,69 +349,76 @@ function ResultGraphImpl(props) {
       },
     },
     scales: {
-      xAxes: [
-        {
-          id: 'x-bar',
-          stacked: true,
-          scaleLabel: {
-            display: true,
-            labelString: xLabel,
-          },
-        },
-        {
-          id: 'x-scat',
-          scaleLabel: {
-            display: false,
-          },
-          type: 'time',
-          time: {
-            parser: UnitKeeper[intervalUnit.unit].format,
-          },
-          ticks: {
-            source: 'labels',
-            min: start / ONE_MILLISECOND,
-            max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
-          },
-        },
-      ],
-      yAxes: [
-        {
-          id: 'y-bar',
-          type: 'linear',
-          position: 'left',
-          stacked: true,
-          scaleLabel: {
-            display: true,
-            labelString: `Number of requests(/${intervalUnit.interval})`,
-          },
-          ticks: {
-            beginAtZero: true,
-            min: minData,
-            max: maxDataB,
-            callback: value => {
-              return `${value}`;
-            },
-          },
-        },
-        {
-          id: 'y-scat',
-          type: 'linear',
-          position: 'right',
-          scaleLabel: {
-            display: true,
-            labelString: `${statusKey}`,
-          },
-          ticks: {
-            beginAtZero: true,
-            min: minData,
-            max: maxDataS,
-          },
-        },
-      ],
+      xBar: {
+        stacked: true,
+        scaleLabel: {
+          display: true,
+          labelString: xLabel,
+        }
+      },
+      // xAxes: [
+      //   {
+      //     id: 'x-bar',
+      //     stacked: true,
+      //     scaleLabel: {
+      //       display: true,
+      //       labelString: xLabel,
+      //     },
+      //   },
+      //   {
+      //     id: 'x-scat',
+      //     scaleLabel: {
+      //       display: false,
+      //     },
+      //     type: 'time',
+      //     time: {
+      //       parser: UnitKeeper[intervalUnit.unit].format,
+      //     },
+      //     ticks: {
+      //       source: 'labels',
+      //       min: start / ONE_MILLISECOND,
+      //       max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
+      //     },
+      //   },
+      // ],
+      // yAxes: [
+      //   {
+      //     id: 'y-bar',
+      //     type: 'linear',
+      //     position: 'left',
+      //     stacked: true,
+      //     scaleLabel: {
+      //       display: true,
+      //       labelString: `Number of requests(/${intervalUnit.interval})`,
+      //     },
+      //     ticks: {
+      //       beginAtZero: true,
+      //       min: minData,
+      //       max: maxDataB,
+      //       callback: value => {
+      //         return `${value}`;
+      //       },
+      //     },
+      //   },
+      //   {
+      //     id: 'y-scat',
+      //     type: 'linear',
+      //     position: 'right',
+      //     scaleLabel: {
+      //       display: true,
+      //       labelString: `${statusKey}`,
+      //     },
+      //     ticks: {
+      //       beginAtZero: true,
+      //       min: minData,
+      //       max: maxDataS,
+      //     },
+      //   },
+      // ],
     },
   };
   // console.log(getUintTime(lookback));
-  console.log("switch");
+  // console.log("switch");
   // return (<div> <p2>hello world!!</p2></div>);
   return (
       <div>
@@ -443,5 +447,4 @@ ResultGraphImpl.defaultProps = {
   graphMenu: null,
 };
 
-// export { ResultGraphImpl };
 export default ResultGraphImpl;
