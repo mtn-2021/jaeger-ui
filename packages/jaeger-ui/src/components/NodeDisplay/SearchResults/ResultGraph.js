@@ -348,13 +348,6 @@ export default function ResultGraphImpl(props) {
       },
     ],
   };
-  const graphOption = {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
   // const graphOption = {
   //   legend: {
   //     display: true,
@@ -430,9 +423,9 @@ export default function ResultGraphImpl(props) {
   // return (<div> <p2>hello world!!</p2></div>); //
   return (
       <div>
-        <Bar data={graphData} options={graphOption} />
+        <Bar data={graphData} />
       </div>
-   );
+   ); // options={graphOption}
 }
 
 ResultGraphImpl.propTypes = {
