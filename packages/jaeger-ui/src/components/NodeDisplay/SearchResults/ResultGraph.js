@@ -340,11 +340,12 @@ function ResultGraphImpl(props) {
     // ],
   };
   const graphOption = {
-    legend: {
-      display: true,
-      labels: {
-        filter: items => {
-          return operationNames.indexOf(items.text) !== -1;
+    plugins: {
+      legend: {
+        labels: {
+          filter: items => {
+            return operationNames.indexOf(items.text) !== -1;
+          },
         },
       },
     },
@@ -412,7 +413,7 @@ function ResultGraphImpl(props) {
   };
   // console.log(getUintTime(lookback));
   // console.log(graphData);
-  console.log("switch");
+  // console.log("switch");
   // console.log(graphOption);
   // return (<div> <p2>hello world!!</p2></div>);
   return (
