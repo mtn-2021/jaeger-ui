@@ -288,9 +288,6 @@ function ResultGraphImpl(props) {
           display: true,
           text: `Number of requests(/${intervalUnit.interval})`,
         },
-        // ticks: {
-        //   callback: value => { return `${value}`; },
-        // },
       },
       yScat: {
         position: 'right',
@@ -300,9 +297,6 @@ function ResultGraphImpl(props) {
           display: true,
           text: `${statusKey}`,
         },
-        // ticks: {
-        //   callback: value => { return `${value}`; },
-        // },
       },
     },
   };
