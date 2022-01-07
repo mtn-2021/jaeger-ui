@@ -284,6 +284,8 @@ function ResultGraphImpl(props) {
         // },
         ticks: {
           source: 'auto',
+          min: `${start / ONE_MILLISECOND}`,
+          max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         }
       },
       yBar: {
