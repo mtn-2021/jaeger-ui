@@ -280,8 +280,8 @@ function ResultGraphImpl(props) {
         type: 'time',
         time: {
           parser: `${UnitKeeper[intervalUnit.unit].format}`,
-          min: `${start / ONE_MILLISECOND}`,
-          max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
+          // min: `${start / ONE_MILLISECOND}`,
+          // max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         },
         ticks: {
           source: 'labels',
