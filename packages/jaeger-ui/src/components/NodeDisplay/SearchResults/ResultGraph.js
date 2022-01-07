@@ -285,11 +285,11 @@ function ResultGraphImpl(props) {
           // min: `${start / ONE_MILLISECOND}`,
           // max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         },
-        ticks: {
-          source: 'labels',
-          // min: `${start / ONE_MILLISECOND}`,
-          // max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
-        }
+        // ticks: {
+        //   source: 'labels',
+        //   // min: `${start / ONE_MILLISECOND}`,
+        //   // max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
+        // }
       },
       yBar: {
         position: 'left',
