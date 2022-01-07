@@ -283,7 +283,7 @@ function ResultGraphImpl(props) {
         //   parser: `${UnitKeeper[intervalUnit.unit].format}`,
         // },
         ticks: {
-          source: 'data',
+          source: 'auto',
         }
       },
       yBar: {
