@@ -274,12 +274,12 @@ function ResultGraphImpl(props) {
       },
       xScat: {
         display: true,
-        min: start,
-        max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
-        type: 'time',
-        time: {
-          parser: UnitKeeper[intervalUnit.unit].format,
-        },
+        min: `${start}`,
+        max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
+        // type: 'time',
+        // time: {
+        //   parser: UnitKeeper[intervalUnit.unit].format,
+        // },
       },
       yBar: {
         position: 'left',
