@@ -282,7 +282,11 @@ function ResultGraphImpl(props) {
         parsing: false,
         time: {
           parsing: false,
+          // parser: `${UnitKeeper[intervalUnit.unit].format}`,
         },
+        ticks: {
+          source: 'data',
+        }
       },
       yBar: {
         position: 'left',
