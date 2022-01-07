@@ -280,10 +280,10 @@ function ResultGraphImpl(props) {
         type: 'time',
         time: {
           unit: 'millisecond',
-          // parser: `${UnitKeeper[intervalUnit.unit].format}`,
+          parser: `${UnitKeeper[intervalUnit.unit].format}`,
         },
         // ticks: {
-        //   source: 'labels',
+        //   source: 'data',
         // }
       },
       yBar: {
