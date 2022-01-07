@@ -276,12 +276,12 @@ function ResultGraphImpl(props) {
         max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
         // suggestedMin: `${start / ONE_MILLISECOND}`,
         // suggestedMax: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
-        // type: 'time',
-        // time: {
-          // parser: `${UnitKeeper[intervalUnit.unit].format}`,
+        type: 'time',
+        time: {
+          parser: `${UnitKeeper[intervalUnit.unit].format}`,
           // min: `${start / ONE_MILLISECOND}`,
           // max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
-        // },
+        },
         // ticks: {
         //   source: 'data',
         //   min: `${start / ONE_MILLISECOND}`,
