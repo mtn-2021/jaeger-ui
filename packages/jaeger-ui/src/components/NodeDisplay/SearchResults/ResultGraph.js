@@ -225,6 +225,7 @@ function ResultGraphImpl(props) {
   let maxDataS = 1;
   // console.log(lb,graphMenu,operationNames);
   // console.log(request, status, statusKey);
+  console.log(start);
   if ((status && status.length > 0) || (request && request.length > 0)) {
     lookback = lb;
     const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
@@ -248,6 +249,7 @@ function ResultGraphImpl(props) {
     datasets = [].concat(statusData.datasets).concat(structure.datasets);
     intervalUnit = structure.interval;
   }
+  console.log(datasets)
   const graphData = {
     labels,
     datasets,
@@ -272,7 +274,7 @@ function ResultGraphImpl(props) {
       },
       xScat: {
         display: false,
-        min: start / ONE_MILLISECOND,
+        min: start,
         max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
         // type: 'time',
         // time: {

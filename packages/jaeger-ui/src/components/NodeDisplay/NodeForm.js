@@ -64,7 +64,6 @@ function submitForm(fields, fetchRequestToNode) {
   const start = lookbackToTimestamp(lb, now);
   const end = now;
   store.set('lastNodeSearch', { node, service, start, lookback: lb });
-  console.log(start,end);
   fetchRequestToNode({
     node,
     service,
