@@ -249,11 +249,12 @@ function ResultGraphImpl(props) {
     datasets = [].concat(statusData.datasets).concat(structure.datasets);
     intervalUnit = structure.interval;
   }
-  console.log(datasets)
+
   const graphData = {
     labels,
     datasets,
   };
+  console.log(graphData);
   const graphOption = {
     plugins: {
       legend: {
@@ -276,10 +277,10 @@ function ResultGraphImpl(props) {
         display: true,
         min: `${start / ONE_MILLISECOND}`,
         max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
-        // type: 'time',
-        // time: {
-        //   parser: UnitKeeper[intervalUnit.unit].format,
-        // },
+        type: 'time',
+        time: {
+          parser: `${UnitKeeper[intervalUnit.unit].format}`,
+        },
       },
       yBar: {
         position: 'left',
