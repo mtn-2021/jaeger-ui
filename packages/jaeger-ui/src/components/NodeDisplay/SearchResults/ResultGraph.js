@@ -282,9 +282,9 @@ function ResultGraphImpl(props) {
         //   // unit: 'millisecond',
         //   parser: `${UnitKeeper[intervalUnit.unit].format}`,
         // },
-        // ticks: {
-        //   source: 'labels',
-        // }
+        ticks: {
+          source: 'data',
+        }
       },
       yBar: {
         position: 'left',
