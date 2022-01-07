@@ -60,9 +60,9 @@ function submitForm(fields, fetchRequestToNode) {
     if (units.indexOf(unit) >= 0 && parseInt(lookback, 10) + unit === lookback) lb = lookback;
   }
 
-  const now = new Date();
+  const now = new Date() * 1000;
   const start = lookbackToTimestamp(lb, now);
-  const end = now * 1000 * 1000;
+  const end = now;
   store.set('lastNodeSearch', { node, service, start, lookback: lb });
   console.log(start,end);
   fetchRequestToNode({
