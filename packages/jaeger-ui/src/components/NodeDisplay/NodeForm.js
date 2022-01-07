@@ -18,7 +18,6 @@ import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Form, Button, Input } from 'antd';
-import moment from 'moment';
 import './NodeForm.css';
 import { bindActionCreators } from 'redux';
 import store from 'store';
@@ -35,23 +34,20 @@ const AdaptedVirtualSelect = reduxFormFieldAdapter({
 });
 
 function lookbackToTimestamp(lookback, from) {
-  const unit = lookback.substr(-1);
   return (
-    moment(from)
-      .subtract(parseInt(lookback, 10), unit)
-      .valueOf() * 1000
+    from - getIntervalUnix(lookback)
   );
 }
 
-// export function getIntervalTime(interval) {
-//   const unit = interval.substr(-1);
-//   const units = {
-//     m: 60,
-//     h: 60 * 60,
-//     d: 60 * 60 * 24,
-//   };
-//   return parseInt(interval, 10) * units[unit] * 1000 * 1000;
-// }
+export function getIntervalUnix(interval) {
+  const unit = interval.substr(-1);
+  const units = {
+    m: 60,
+    h: 60 * 60,
+    d: 60 * 60 * 24,
+  };
+  return parseInt(interval, 10) * units[unit] * 1000 * 1000;
+}
 
 function submitForm(fields, fetchRequestToNode) {
   const { node, service, lookback } = fields;
@@ -66,7 +62,7 @@ function submitForm(fields, fetchRequestToNode) {
 
   const now = new Date();
   const start = lookbackToTimestamp(lb, now);
-  const end = now * 1000;
+  const end = now * 1000 * 1000;
   store.set('lastNodeSearch', { node, service, start, lookback: lb });
 
   fetchRequestToNode({
