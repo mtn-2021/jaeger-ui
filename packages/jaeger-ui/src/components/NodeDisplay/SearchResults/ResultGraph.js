@@ -223,8 +223,8 @@ function ResultGraphImpl(props) {
   const minData = 0;
   let maxDataB = 10;
   let maxDataS = 1;
-  console.log(lb,graphMenu,operationNames);
-  console.log(request, status, statusKey);
+  // console.log(lb,graphMenu,operationNames);
+  // console.log(request, status, statusKey);
   if ((status && status.length > 0) || (request && request.length > 0)) {
     lookback = lb;
     const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);

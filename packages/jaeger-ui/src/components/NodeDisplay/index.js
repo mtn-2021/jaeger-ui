@@ -231,7 +231,6 @@ const nodeDetailXformer = memoizeOne(nodeDetail => {
 });
 
 export function mapStateToProps(state) {
-  console.log("ND inx / state",state);
   const { router, nodes: tmpNodes } = state;
   const query = getUrlState(router.location.search);
   const { nodeList, loadingNodes, nodeError, search } = stateNodesXformer(tmpNodes);
