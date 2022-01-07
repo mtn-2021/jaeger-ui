@@ -128,8 +128,7 @@ function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
 
     time += intervalTime;
     const label = moment(time / ONE_MILLISECOND)
-      .format(format)
-      .split(' ');
+      .format(format);
     labels.push(label);
   }
 
