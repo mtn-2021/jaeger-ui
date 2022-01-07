@@ -368,8 +368,8 @@ function ResultGraphImpl(props) {
       yBar: {
         position: 'left',
         stacked: true,
-        min: minData,
-        max: maxDataB,
+        min: `${minData}`,
+        max: `${maxDataB}`,
         title: {
           display: true,
           text: `Number of requests(/${intervalUnit.interval})`,
@@ -381,8 +381,8 @@ function ResultGraphImpl(props) {
       },
       yScat: {
         position: 'right',
-        min: minData,
-        max: maxDataS,
+        min: `${minData}`,
+        max: `${maxDataS}`,
         title: {
           display: true,
           text: `${statusKey}`,
