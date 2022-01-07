@@ -374,8 +374,7 @@ function ResultGraphImpl(props) {
           text: `Number of requests(/${intervalUnit.interval})`,
         },
         ticks: {
-          callback: value => {
-            return `${value}`;},
+          callback: value => { return `${value}`; },
         },
       },
       yScat: {
@@ -392,7 +391,6 @@ function ResultGraphImpl(props) {
       },
     },
   };
-  // return (<div> <p2>hello world!!</p2></div>);
   return (
       <div>
         <Bar data={graphData} options={graphOption} />
