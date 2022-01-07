@@ -352,6 +352,7 @@ function ResultGraphImpl(props) {
       xBar: {
           stacked: true,
           scaleLabel: {
+            display: false,
             labelString: xLabel,
           },
         },
@@ -403,8 +404,6 @@ function ResultGraphImpl(props) {
       },
     },
   };
-  // console.log(getUintTime(lookback));
-  console.log("switch");
   // return (<div> <p2>hello world!!</p2></div>);
   return (
       <div>
