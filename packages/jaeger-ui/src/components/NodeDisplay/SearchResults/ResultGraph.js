@@ -279,12 +279,12 @@ function ResultGraphImpl(props) {
         max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         type: 'time',
         time: {
-          unit: 'millisecond'
-          // parser: `${UnitKeeper[intervalUnit.unit].format}`,
+          unit: 'millisecond',
+          parser: `${UnitKeeper[intervalUnit.unit].format}`,
         },
-        // ticks: {
-        //   source: 'data',
-        // }
+        ticks: {
+          source: 'labels',
+        }
       },
       yBar: {
         position: 'left',
