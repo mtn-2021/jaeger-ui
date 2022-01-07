@@ -339,85 +339,85 @@ function ResultGraphImpl(props) {
     //   },
     // ],
   };
-  // const graphOption = {
-  //   legend: {
-  //     display: true,
-  //     labels: {
-  //       filter: items => {
-  //         return operationNames.indexOf(items.text) !== -1;
-  //       },
-  //     },
-  //   },
-  //   scales: {
-  //     xAxes: [
-  //       {
-  //         id: 'x-bar',
-  //         stacked: true,
-  //         scaleLabel: {
-  //           display: true,
-  //           labelString: xLabel,
-  //         },
-  //       },
-  //       {
-  //         id: 'x-scat',
-  //         scaleLabel: {
-  //           display: false,
-  //         },
-  //         type: 'time',
-  //         time: {
-  //           parser: UnitKeeper[intervalUnit.unit].format,
-  //         },
-  //         ticks: {
-  //           source: 'labels',
-  //           min: start / ONE_MILLISECOND,
-  //           max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
-  //         },
-  //       },
-  //     ],
-  //     yAxes: [
-  //       {
-  //         id: 'y-bar',
-  //         position: 'left',
-  //         stacked: true,
-  //         scaleLabel: {
-  //           display: true,
-  //           labelString: `Number of requests(/${intervalUnit.interval})`,
-  //         },
-  //         ticks: {
-  //           beginAtZero: true,
-  //           min: minData,
-  //           max: maxDataB,
-  //           callback: value => {
-  //             return `${value}`;
-  //           },
-  //         },
-  //       },
-  //       {
-  //         id: 'y-scat',
-  //         position: 'right',
-  //         scaleLabel: {
-  //           display: true,
-  //           labelString: `${statusKey}`,
-  //         },
-  //         ticks: {
-  //           beginAtZero: true,
-  //           min: minData,
-  //           max: maxDataS,
-  //         },
-  //       },
-  //     ],
-  //   },
-  // };
+  const graphOption = {
+    legend: {
+      display: true,
+      labels: {
+        filter: items => {
+          return operationNames.indexOf(items.text) !== -1;
+        },
+      },
+    },
+    scales: {
+      xAxes: [
+        {
+          id: 'x-bar',
+          stacked: true,
+          scaleLabel: {
+            display: true,
+            labelString: xLabel,
+          },
+        },
+        {
+          id: 'x-scat',
+          scaleLabel: {
+            display: false,
+          },
+          type: 'time',
+          time: {
+            parser: UnitKeeper[intervalUnit.unit].format,
+          },
+          ticks: {
+            source: 'labels',
+            min: start / ONE_MILLISECOND,
+            max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
+          },
+        },
+      ],
+      yAxes: [
+        {
+          id: 'y-bar',
+          position: 'left',
+          stacked: true,
+          scaleLabel: {
+            display: true,
+            labelString: `Number of requests(/${intervalUnit.interval})`,
+          },
+          ticks: {
+            beginAtZero: true,
+            min: minData,
+            max: maxDataB,
+            callback: value => {
+              return `${value}`;
+            },
+          },
+        },
+        {
+          id: 'y-scat',
+          position: 'right',
+          scaleLabel: {
+            display: true,
+            labelString: `${statusKey}`,
+          },
+          ticks: {
+            beginAtZero: true,
+            min: minData,
+            max: maxDataS,
+          },
+        },
+      ],
+    },
+  };
   // console.log(getUintTime(lookback));
-  console.log(graphData);
-  console.log("switch");
+  // console.log(graphData);
+  // console.log("switch");
   // console.log(graphOption);
   // return (<div> <p2>hello world!!</p2></div>);
   return (
       <div>
-        <Bar data={graphData} />
+        <Bar data={graphData} options={graphOption} />
       </div>
-   ); // options={graphOption}
+   ); // tmp
 }
 
 ResultGraphImpl.propTypes = {
