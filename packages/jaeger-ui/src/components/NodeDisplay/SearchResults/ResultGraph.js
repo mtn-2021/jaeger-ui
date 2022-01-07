@@ -278,9 +278,9 @@ function ResultGraphImpl(props) {
         min: `${start / ONE_MILLISECOND}`,
         max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         type: 'time',
-        time: {
-          parser: `${UnitKeeper[intervalUnit.unit].format}`,
-        },
+        // time: {
+        //   parser: `${UnitKeeper[intervalUnit.unit].format}`,
+        // },
       },
       yBar: {
         position: 'left',
