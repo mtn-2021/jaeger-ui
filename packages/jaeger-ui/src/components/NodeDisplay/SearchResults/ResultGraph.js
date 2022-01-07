@@ -160,41 +160,41 @@ function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
 function getStatusPlot(status, yPlop) {
   const statusData = [];
   const missingData = [];
-   statusData.push(
-       {
-         operationName: "test",
-         x: 164035633771,
-         y: 0.5,
-       });
-   missingData.push(
-       {
-         operationName: "test2",
-         x: 164035640000,
-         y: 1,
-       });
-  // const statusFlag = yPlop === 'status';
+   // statusData.push(
+   //     {
+   //       operationName: "test",
+   //       x: 164035633771,
+   //       y: 0.5,
+   //     });
+   // missingData.push(
+   //     {
+   //       operationName: "test2",
+   //       x: 164035640000,
+   //       y: 1,
+   //     });
+  const statusFlag = yPlop === 'status';
   let maxData = -Infinity;
 
-  // status.forEach(stPart => {
-  //   if (stPart.isOn) {
-  //     const index = [].concat(stPart.keys).indexOf(yPlop);
-  //     if (index >= 0) {
-  //       const value = statusFlag ? 1 : parseInt(stPart.values[index], 10);
-  //       statusData.push({
-  //         operationName: stPart.operationName,
-  //         x: stPart.timestamp / ONE_MILLISECOND,
-  //         y: value,
-  //       });
-  //       if (maxData < value) maxData = value;
-  //     }
-  //   } else {
-  //     missingData.push({
-  //       operationName: stPart.operationName,
-  //       x: stPart.timestamp / ONE_MILLISECOND,
-  //       y: 0,
-  //     });
-  //   }
-  // });
+  status.forEach(stPart => {
+    if (stPart.isOn) {
+      const index = [].concat(stPart.keys).indexOf(yPlop);
+      if (index >= 0) {
+        const value = statusFlag ? 1 : parseInt(stPart.values[index], 10);
+        statusData.push({
+          operationName: stPart.operationName,
+          x: stPart.timestamp / ONE_MILLISECOND,
+          y: value,
+        });
+        if (maxData < value) maxData = value;
+      }
+    } else {
+      missingData.push({
+        operationName: stPart.operationName,
+        x: stPart.timestamp / ONE_MILLISECOND,
+        y: 0,
+      });
+    }
+  });
 
   const datasets = [
     {
@@ -235,6 +235,7 @@ function ResultGraphImpl(props) {
   let minData = 0;
   let maxDataB = 10;
   let maxDataS = 1;
+  operationNames.push(xLabel);
   // intervalUnit = {unit: 'h'}; // structure.interval;
   console.log(lb,graphMenu,start,operationNames);
   console.log(request, status, statusKey);
@@ -342,6 +343,7 @@ function ResultGraphImpl(props) {
   const graphOption = {
     plugins: {
       legend: {
+        // display: true,
         labels: {
           filter: items => {
             return operationNames.indexOf(items.text) !== -1;
@@ -412,9 +414,7 @@ function ResultGraphImpl(props) {
     },
   };
   // console.log(getUintTime(lookback));
-  // console.log(graphData);
-  // console.log("switch");
-  // console.log(graphOption);
+  console.log("switch");
   // return (<div> <p2>hello world!!</p2></div>);
   return (
       <div>
