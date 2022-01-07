@@ -33,20 +33,20 @@ const AdaptedVirtualSelect = reduxFormFieldAdapter({
   onChangeAdapter: option => (option ? option.value : null),
 });
 
+export function getIntervalUnix(interval) {
+    const unit = interval.substr(-1);
+    const units = {
+        m: 60,
+        h: 60 * 60,
+        d: 60 * 60 * 24,
+    };
+    return parseInt(interval, 10) * units[unit] * 1000 * 1000;
+}
+
 function lookbackToTimestamp(lookback, from) {
   return (
     from - getIntervalUnix(lookback)
   );
-}
-
-export function getIntervalUnix(interval) {
-  const unit = interval.substr(-1);
-  const units = {
-    m: 60,
-    h: 60 * 60,
-    d: 60 * 60 * 24,
-  };
-  return parseInt(interval, 10) * units[unit] * 1000 * 1000;
 }
 
 function submitForm(fields, fetchRequestToNode) {
