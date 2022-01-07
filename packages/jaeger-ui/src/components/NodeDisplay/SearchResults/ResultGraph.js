@@ -276,10 +276,10 @@ function ResultGraphImpl(props) {
         display: true,
         min: start,
         max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
-        // type: 'time',
-        // time: {
-        //   parser: UnitKeeper[intervalUnit.unit].format,
-        // },
+        type: 'time',
+        time: {
+          parser: UnitKeeper[intervalUnit.unit].format,
+        },
       },
       yBar: {
         position: 'left',
