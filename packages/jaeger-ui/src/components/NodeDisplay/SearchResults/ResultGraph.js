@@ -275,16 +275,16 @@ function ResultGraphImpl(props) {
       },
       xScat: {
         display: true,
-        min: `${Math.floor(start / ONE_MILLISECOND)}`,
-        max: `${Math.floor((start + getUintTime(lookback)) / ONE_MILLISECOND)}`,
-        type: 'time',
-        time: {
-          // unit: 'millisecond',
-          parser: `${UnitKeeper[intervalUnit.unit].format}`,
-        },
-        ticks: {
-          source: 'labels',
-        }
+        min: `${start / ONE_MILLISECOND}`,
+        max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
+        // type: 'time',
+        // time: {
+        //   // unit: 'millisecond',
+        //   parser: `${UnitKeeper[intervalUnit.unit].format}`,
+        // },
+        // ticks: {
+        //   source: 'labels',
+        // }
       },
       yBar: {
         position: 'left',
