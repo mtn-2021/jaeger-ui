@@ -274,37 +274,31 @@ function ResultGraphImpl(props) {
         display: true,
         min: start / ONE_MILLISECOND,
         max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
-        // suggestedMin: `${start / ONE_MILLISECOND}`,
-        // suggestedMax: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         type: 'time',
         time: {
           parser: `${UnitKeeper[intervalUnit.unit].format}`,
-          // min: `${start / ONE_MILLISECOND}`,
-          // max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         },
-        // ticks: {
-        //   source: 'data',
-        //   min: `${start / ONE_MILLISECOND}`,
-        //   max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
-        // }
+        ticks: {
+          source: 'labels',
+        }
       },
       yBar: {
         position: 'left',
         stacked: true,
-        min: `${minData}`,
-        max: `${maxDataB}`,
+        min: minData,
+        max: maxDataB,
         title: {
           display: true,
           text: `Number of requests(/${intervalUnit.interval})`,
         },
-        ticks: {
-          callback: value => { return `${value}`; },
-        },
+        // ticks: {
+        //   callback: value => { return `${value}`; },
+        // },
       },
       yScat: {
         position: 'right',
-        min: `${minData}`,
-        max: `${maxDataS}`,
+        min: minData,
+        max: maxDataS,
         title: {
           display: true,
           text: `${statusKey}`,
