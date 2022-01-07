@@ -351,9 +351,9 @@ function ResultGraphImpl(props) {
     scales: {
       xBar: {
           stacked: true,
-          scaleLabel: {
-            display: false,
-            labelString: xLabel,
+          title: {
+            display: true,
+            text: xLabel,
           },
         },
         // {
