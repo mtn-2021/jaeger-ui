@@ -16,6 +16,7 @@ import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Bar }  from 'react-chartjs-2';
+import 'chartjs-adopter-moment';
 import { ONE_MILLISECOND } from '../../../utils/date';
 
 function getUintTime(time) {
@@ -278,9 +279,9 @@ function ResultGraphImpl(props) {
         min: `${start / ONE_MILLISECOND}`,
         max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         type: 'time',
-        // time: {
-        //   parser: `${UnitKeeper[intervalUnit.unit].format}`,
-        // },
+        time: {
+          parser: `${UnitKeeper[intervalUnit.unit].format}`,
+        },
       },
       yBar: {
         position: 'left',
