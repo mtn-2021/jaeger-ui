@@ -227,28 +227,28 @@ function getStatusPlot(status, yPlop) {
 
 function ResultGraphImpl(props) {
   const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
-  const lookback = '1h';
+  let lookback = '1h';
   let labels;
   let datasets;
-  const xLabel= 'Last 1 hour';
+  let xLabel= 'Last 1 hour';
   let intervalUnit;
-  const minData = 0;
-  const maxDataB = 10;
-  const maxDataS = 1;
+  let minData = 0;
+  let maxDataB = 10;
+  let maxDataS = 1;
   // intervalUnit = {unit: 'h'}; // structure.interval;
   console.log(lb,graphMenu,start,operationNames);
   console.log(request, status, statusKey);
   if ((status && status.length > 0) || (request && request.length > 0)) {
-    // lookback = lb;
-    // const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
-    // const statusData = getStatusPlot(status, statusKey);
-    // labels = structure.labels;
-    // datasets = [].concat(statusData.datasets).concat(structure.datasets);
-    // xLabel = `Last ${parseInt(lookback, 10)} ${UnitKeeper[lookback.substr(-1)].full}`;
-    // intervalUnit = structure.interval;
-    // minData = 0;
-    // maxDataB = structure.maxData;
-    // maxDataS = statusData.maxData;
+    lookback = lb;
+    const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
+    const statusData = getStatusPlot(status, statusKey);
+    labels = structure.labels;
+    datasets = [].concat(statusData.datasets).concat(structure.datasets);
+    xLabel = `Last ${parseInt(lookback, 10)} ${UnitKeeper[lookback.substr(-1)].full}`;
+    intervalUnit = structure.interval;
+    minData = 0;
+    maxDataB = structure.maxData;
+    maxDataS = statusData.maxData;
   } else {
     const structure = getLabelsAndData(
       lookback,
@@ -308,7 +308,7 @@ function ResultGraphImpl(props) {
     intervalUnit = structure.interval;
   }
   console.log(lookback,xLabel,intervalUnit,minData,maxDataB,maxDataS,statusKey);
-  // console.log(labels,datasets);
+  console.log(labels,datasets);
   const graphData = {
     labels,
     datasets,
@@ -377,6 +377,7 @@ function ResultGraphImpl(props) {
       yAxes: [
         {
           id: 'y-bar',
+          type: 'linear',
           position: 'left',
           stacked: true,
           scaleLabel: {
@@ -394,6 +395,7 @@ function ResultGraphImpl(props) {
         },
         {
           id: 'y-scat',
+          type: 'linear',
           position: 'right',
           scaleLabel: {
             display: true,
@@ -410,14 +412,14 @@ function ResultGraphImpl(props) {
   };
   // console.log(getUintTime(lookback));
   // console.log(graphData);
-  // console.log("switch");
+  console.log("switch");
   // console.log(graphOption);
   // return (<div> <p2>hello world!!</p2></div>);
   return (
       <div>
         <Bar data={graphData} options={graphOption} />
       </div>
-   ); // tmp
+   );
 }
 
 ResultGraphImpl.propTypes = {
