@@ -226,16 +226,16 @@ import { Bar }  from 'react-chartjs-2';
 //   return { datasets, maxData };
 // }
 
-export default function ResultGraphImpl(props) {
+function ResultGraphImpl(props) {
   const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
-  // let lookback = '1h';
-  // let labels;
-  // let datasets;
-  // let xLabel= 'Last 1 hour';
-  // let intervalUnit;
-  // let minData = 0;
-  // let maxDataB = 10;
-  // let maxDataS = 1;
+  let lookback = '1h';
+  let labels;
+  let datasets;
+  let xLabel= 'Last 1 hour';
+  let intervalUnit;
+  let minData = 0;
+  let maxDataB = 10;
+  let maxDataS = 1;
   // intervalUnit = {unit: 'h'}; // structure.interval;
   console.log(lb,graphMenu,start,operationNames);
   console.log(request, status, statusKey);
@@ -258,87 +258,87 @@ export default function ResultGraphImpl(props) {
     //   operationNames,
     //   graphMenu
     // );
-    // const structure = {
-    //   interval: {unit: 'h'},
-    //   labels: ["1","2","3","4","5"],
-    //   datasets: [
-    //       {
-    //         type: 'bar',
-    //         data: [1,2,3,4,5],
-    //         label: 'Number of request',
-    //         backgroundColor: 'rgba(30, 144, 255, 1)',
-    //         yAxisID: 'y-bar',
-    //         xAxisID: 'x-bar',
-    //       },
-    //   ]
-    // }
+    const structure = {
+      interval: {unit: 'h'},
+      labels: ["1","2","3","4","5"],
+      datasets: [
+          {
+            type: 'bar',
+            data: [1,2,3,4,5],
+            label: 'Number of request',
+            backgroundColor: 'rgba(30, 144, 255, 1)',
+            yAxisID: 'y-bar',
+            xAxisID: 'x-bar',
+          },
+      ]
+    }
     // const statusData = getStatusPlot(status, statusKey);
-    // const statusData = {
-    //   datasets: [{
-    //     type: 'scatter',
-    //     data: [{
-    //       operationName: "test",
-    //       x: 164035633771,
-    //       y: 0.5,},
-    //       {
-    //       operationName: "test2",
-    //       x: 164035640000,
-    //       y: 1,},
-    //     ],
-    //     label: statusKey,
-    //     backgroundColor: `rgba(117, 219, 219,1)`,
-    //     yAxisID: 'y-scat',
-    //     xAxisID: 'x-scat',
-    //   }, {
-    //     type: 'scatter',
-    //     data: [{
-    //       operationName: "test3",
-    //       x: 164035633771,
-    //       y: 0.25,}, {
-    //       operationName: "test4",
-    //       x: 164035640000,
-    //       y: 0,},],
-    //     label: 'disConnect',
-    //     backgroundColor: `rgba(255, 15, 43, 1)`,
-    //     yAxisID: 'y-scat',
-    //     xAxisID: 'x-scat',
-    //   },]
-    // };
-    // labels = structure.labels;
-    // datasets = [].concat(statusData.datasets).concat(structure.datasets);
-    // intervalUnit = {unit: 'h'}; // structure.interval;
+    const statusData = {
+      datasets: [{
+        type: 'scatter',
+        data: [{
+          operationName: "test",
+          x: 164035633771,
+          y: 0.5,},
+          {
+          operationName: "test2",
+          x: 164035640000,
+          y: 1,},
+        ],
+        label: statusKey,
+        backgroundColor: `rgba(117, 219, 219,1)`,
+        yAxisID: 'y-scat',
+        xAxisID: 'x-scat',
+      }, {
+        type: 'scatter',
+        data: [{
+          operationName: "test3",
+          x: 164035633771,
+          y: 0.25,}, {
+          operationName: "test4",
+          x: 164035640000,
+          y: 0,},],
+        label: 'disConnect',
+        backgroundColor: `rgba(255, 15, 43, 1)`,
+        yAxisID: 'y-scat',
+        xAxisID: 'x-scat',
+      },]
+    };
+    labels = structure.labels;
+    datasets = [].concat(statusData.datasets).concat(structure.datasets);
+    intervalUnit = structure.interval;
   // }
-  // console.log(lookback,xLabel,intervalUnit,minData,maxDataB,maxDataS,statusKey);
+  console.log(lookback,xLabel,intervalUnit,minData,maxDataB,maxDataS,statusKey);
   // console.log(labels,datasets);
   const graphData = {
-    // labels,
-    // datasets,
-    labels: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月'],
-    datasets: [
-      {
-        label: 'Dataset',
-        data: [65, 59, 80, 81, 56, 55, 40],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 205, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(201, 203, 207, 0.2)',
-        ],
-        borderColor: [
-          'rgb(255, 99, 132)',
-          'rgb(255, 159, 64)',
-          'rgb(255, 205, 86)',
-          'rgb(75, 192, 192)',
-          'rgb(54, 162, 235)',
-          'rgb(153, 102, 255)',
-          'rgb(201, 203, 207)',
-        ],
-        borderWidth: 1,
-      },
-    ],
+    labels,
+    datasets,
+    // labels: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月'],
+    // datasets: [
+    //   {
+    //     label: 'Dataset',
+    //     data: [65, 59, 80, 81, 56, 55, 40],
+    //     backgroundColor: [
+    //       'rgba(255, 99, 132, 0.2)',
+    //       'rgba(255, 159, 64, 0.2)',
+    //       'rgba(255, 205, 86, 0.2)',
+    //       'rgba(75, 192, 192, 0.2)',
+    //       'rgba(54, 162, 235, 0.2)',
+    //       'rgba(153, 102, 255, 0.2)',
+    //       'rgba(201, 203, 207, 0.2)',
+    //     ],
+    //     borderColor: [
+    //       'rgb(255, 99, 132)',
+    //       'rgb(255, 159, 64)',
+    //       'rgb(255, 205, 86)',
+    //       'rgb(75, 192, 192)',
+    //       'rgb(54, 162, 235)',
+    //       'rgb(153, 102, 255)',
+    //       'rgb(201, 203, 207)',
+    //     ],
+    //     borderWidth: 1,
+    //   },
+    // ],
   };
   // const graphOption = {
   //   legend: {
@@ -411,7 +411,7 @@ export default function ResultGraphImpl(props) {
   // };
   // console.log(getUintTime(lookback));
   console.log(graphData);
-  // console.log("switch");
+  console.log("switch");
   // console.log(graphOption);
   // return (<div> <p2>hello world!!</p2></div>);
   return (
@@ -442,4 +442,4 @@ ResultGraphImpl.defaultProps = {
 };
 
 // export { ResultGraphImpl };
-// export default ResultGraphImpl;
+export default ResultGraphImpl;
