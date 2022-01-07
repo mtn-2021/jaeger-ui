@@ -232,7 +232,7 @@ function ResultGraphImpl(props) {
   let datasets;
   let xLabel= 'Last 1 hour';
   let intervalUnit;
-  let minData = 0;
+  const minData = 0;
   let maxDataB = 10;
   let maxDataS = 1;
   console.log(lb,graphMenu,start,operationNames);
