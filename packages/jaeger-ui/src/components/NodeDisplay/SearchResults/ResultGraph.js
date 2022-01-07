@@ -16,7 +16,7 @@ import React from 'react';
 // import dimensions from 'react-dimensions';
 // import moment from 'moment';
 import PropTypes from 'prop-types';
-import { Bar }  from 'react-chartjs-2';
+import { Pie }  from 'react-chartjs-2';
 // import { ONE_MILLISECOND } from '../../../utils/date';
 
 // function getUintTime(time) {
@@ -419,11 +419,12 @@ export default function ResultGraphImpl(props) {
   // };
   // console.log(getUintTime(lookback));
   console.log(graphData);
+  console.log("switch");
   // console.log(graphOption);
-  // return (<div> <p2>hello world!!</p2></div>); //
+  // return (<div> <p2>hello world!!</p2></div>);
   return (
       <div>
-        <Bar data={graphData} />
+        <Pie data={graphData} />
       </div>
    ); // options={graphOption}
 }
