@@ -128,7 +128,8 @@ function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
 
     time += intervalTime;
     const label = moment(time / ONE_MILLISECOND)
-      .format(format);
+      .format(format)
+      .split(' ');
     labels.push(label);
   }
 
@@ -279,19 +280,16 @@ function ResultGraphImpl(props) {
         // suggestedMin: `${start / ONE_MILLISECOND}`,
         // suggestedMax: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         type: 'time',
-        time: {
-          parser: `${UnitKeeper[intervalUnit.unit].format}`,
-          displayFormats: {
-            quarter: 'YYYY MM/DD hh:mm a',
-          },
+        // time: {
+          // parser: `${UnitKeeper[intervalUnit.unit].format}`,
           // min: `${start / ONE_MILLISECOND}`,
           // max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
-        },
-        // ticks: {
-        //   source: 'labels',
+        // },
+        ticks: {
+          source: 'data',
         //   // min: `${start / ONE_MILLISECOND}`,
         //   // max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
-        // }
+        }
       },
       yBar: {
         position: 'left',
