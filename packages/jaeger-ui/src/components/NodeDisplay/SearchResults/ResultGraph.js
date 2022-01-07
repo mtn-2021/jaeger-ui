@@ -277,6 +277,8 @@ function ResultGraphImpl(props) {
         display: true,
         min: `${start / ONE_MILLISECOND}`,
         max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
+        suggestedMin: `${start / ONE_MILLISECOND}`,
+        suggestedMax: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         type: 'time',
         // time: {
         //   // unit: 'millisecond',
@@ -284,8 +286,8 @@ function ResultGraphImpl(props) {
         // },
         ticks: {
           source: 'auto',
-          min: `${start / ONE_MILLISECOND}`,
-          max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
+          // min: `${start / ONE_MILLISECOND}`,
+          // max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         }
       },
       yBar: {
