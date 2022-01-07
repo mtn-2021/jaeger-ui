@@ -350,55 +350,45 @@ function ResultGraphImpl(props) {
     },
     scales: {
       xBar: {
-          stacked: true,
-          title: {
-            display: true,
-            text: xLabel,
-          },
+        stacked: true,
+        title: {
+          display: true,
+          text: `${xLabel}`,
         },
+      },
       xScat: {
         display: false,
-        // min: start / ONE_MILLISECOND,
-        // max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
+        min: start / ONE_MILLISECOND,
+        max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
         // type: 'time',
         // time: {
         //   parser: UnitKeeper[intervalUnit.unit].format,
         // },
-        ticks: {
-          source: 'labels',
-          min: start / ONE_MILLISECOND,
-          max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
-        },
       },
-      yAxes: {
-        yBar: {
-          position: 'left',
-          stacked: true,
-          scaleLabel: {
-            display: true,
-            labelString: `Number of requests(/${intervalUnit.interval})`,
-          },
-          ticks: {
-            beginAtZero: true,
-            min: minData,
-            max: maxDataB,
-            callback: value => {
-              return `${value}`;
-            },
-          },
+      yBar: {
+        position: 'left',
+        stacked: true,
+        min: minData,
+        max: maxDataB,
+        title: {
+          display: true,
+          text: `Number of requests(/${intervalUnit.interval})`,
         },
-        // {
-        //   id: 'yScat',
-        //   position: 'right',
-        //   scaleLabel: {
-        //     display: true,
-        //     labelString: `${statusKey}`,
-        //   },
-        //   ticks: {
-        //     beginAtZero: true,
-        //     min: minData,
-        //     max: maxDataS,
-        //   },
+        // ticks: {
+        //   callback: value => {
+        //     return `${value}`;},
+        // },
+      },
+      yScat: {
+        position: 'right',
+        min: minData,
+        max: maxDataS,
+        title: {
+          display: true,
+          text: `${statusKey}`,
+        },
+        // ticks: {
+        //   beginAtZero: true,
         // },
       },
     },
