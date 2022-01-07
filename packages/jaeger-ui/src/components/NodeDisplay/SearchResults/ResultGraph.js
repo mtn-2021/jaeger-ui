@@ -356,21 +356,20 @@ function ResultGraphImpl(props) {
             text: xLabel,
           },
         },
-        // {
-        //   id: 'xScat',
-        //   scaleLabel: {
-        //     display: false,
-        //   },
-        //   type: 'time',
-        //   time: {
-        //     parser: UnitKeeper[intervalUnit.unit].format,
-        //   },
-        //   ticks: {
-        //     source: 'labels',
-        //     min: start / ONE_MILLISECOND,
-        //     max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
-        //   },
+      xScat: {
+        display: false,
+        // min: start / ONE_MILLISECOND,
+        // max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
+        // type: 'time',
+        // time: {
+        //   parser: UnitKeeper[intervalUnit.unit].format,
         // },
+        ticks: {
+          source: 'labels',
+          min: start / ONE_MILLISECOND,
+          max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
+        },
+      },
       yAxes: {
         yBar: {
           position: 'left',
