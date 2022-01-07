@@ -226,8 +226,8 @@ import { Bar }  from 'react-chartjs-2';
 //   return { datasets, maxData };
 // }
 
-export default function ResultGraphImpl() {
-  // const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
+export default function ResultGraphImpl(props) {
+  const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
   // let lookback = '1h';
   // let labels;
   // let datasets;
@@ -237,8 +237,8 @@ export default function ResultGraphImpl() {
   // let maxDataB = 10;
   // let maxDataS = 1;
   // intervalUnit = {unit: 'h'}; // structure.interval;
-  // console.log(lb,graphMenu,start,operationNames);
-  // console.log(request, status, statusKey);
+  console.log(lb,graphMenu,start,operationNames);
+  console.log(request, status, statusKey);
   // if ((status && status.length > 0) || (request && request.length > 0)) {
     // lookback = lb;
     // const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
@@ -411,7 +411,7 @@ export default function ResultGraphImpl() {
   // };
   // console.log(getUintTime(lookback));
   console.log(graphData);
-  console.log("switch");
+  // console.log("switch");
   // console.log(graphOption);
   // return (<div> <p2>hello world!!</p2></div>);
   return (
@@ -421,25 +421,25 @@ export default function ResultGraphImpl() {
    ); // options={graphOption}
 }
 
-// ResultGraphImpl.propTypes = {
-//   lookback: PropTypes.string,
-//   start: PropTypes.number,
-//   request: PropTypes.arrayOf(PropTypes.string),
-//   status: PropTypes.arrayOf(PropTypes.string),
-//   operationNames: PropTypes.arrayOf(PropTypes.string),
-//   statusKey: PropTypes.string,
-//   graphMenu: PropTypes.string,
-// };
-//
-// ResultGraphImpl.defaultProps = {
-//   lookback: null,
-//   start: null,
-//   request: [],
-//   status: [],
-//   operationNames: [],
-//   statusKey: null,
-//   graphMenu: null,
-// };
+ResultGraphImpl.propTypes = {
+  lookback: PropTypes.string,
+  start: PropTypes.number,
+  request: PropTypes.arrayOf(PropTypes.string),
+  status: PropTypes.arrayOf(PropTypes.string),
+  operationNames: PropTypes.arrayOf(PropTypes.string),
+  statusKey: PropTypes.string,
+  graphMenu: PropTypes.string,
+};
+
+ResultGraphImpl.defaultProps = {
+  lookback: null,
+  start: null,
+  request: [],
+  status: [],
+  operationNames: [],
+  statusKey: null,
+  graphMenu: null,
+};
 
 // export { ResultGraphImpl };
 // export default ResultGraphImpl;
