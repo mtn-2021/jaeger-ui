@@ -54,6 +54,7 @@
     "antd": "3.8.0",
     "chance": "^1.0.10",
     "chart.js": "3.3.2",
+    "chartjs-adapter-moment": "1.0.0",
     "classnames": "^2.2.5",
     "combokeys": "^3.0.0",
     "copy-to-clipboard": "^3.1.0",

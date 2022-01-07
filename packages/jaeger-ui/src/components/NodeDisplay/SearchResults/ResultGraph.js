@@ -16,7 +16,7 @@ import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import { Bar }  from 'react-chartjs-2';
-import 'chartjs-adopter-moment';
+import 'chartjs-adapter-moment';
 import { ONE_MILLISECOND } from '../../../utils/date';
 
 function getUintTime(time) {
