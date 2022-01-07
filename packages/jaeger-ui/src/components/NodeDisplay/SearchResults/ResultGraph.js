@@ -228,18 +228,18 @@ import { Bar }  from 'react-chartjs-2';
 
 function ResultGraphImpl(props) {
   const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
-  let lookback = '1h';
+  const lookback = '1h';
   let labels;
   let datasets;
-  let xLabel= 'Last 1 hour';
+  const xLabel= 'Last 1 hour';
   let intervalUnit;
-  let minData = 0;
-  let maxDataB = 10;
-  let maxDataS = 1;
+  const minData = 0;
+  const maxDataB = 10;
+  const maxDataS = 1;
   // intervalUnit = {unit: 'h'}; // structure.interval;
   console.log(lb,graphMenu,start,operationNames);
   console.log(request, status, statusKey);
-  // if ((status && status.length > 0) || (request && request.length > 0)) {
+  if ((status && status.length > 0) || (request && request.length > 0)) {
     // lookback = lb;
     // const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
     // const statusData = getStatusPlot(status, statusKey);
@@ -250,7 +250,7 @@ function ResultGraphImpl(props) {
     // minData = 0;
     // maxDataB = structure.maxData;
     // maxDataS = statusData.maxData;
-  // } else {
+  } else {
     // const structure = getLabelsAndData(
     //   lookback,
     //   new Date() * 1000 - getUintTime(lookback),
@@ -307,7 +307,7 @@ function ResultGraphImpl(props) {
     labels = structure.labels;
     datasets = [].concat(statusData.datasets).concat(structure.datasets);
     intervalUnit = structure.interval;
-  // }
+  }
   console.log(lookback,xLabel,intervalUnit,minData,maxDataB,maxDataS,statusKey);
   // console.log(labels,datasets);
   const graphData = {
