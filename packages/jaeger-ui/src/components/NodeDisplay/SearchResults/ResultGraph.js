@@ -300,9 +300,9 @@ function ResultGraphImpl(props) {
           display: true,
           text: `${statusKey}`,
         },
-        // ticks: {
-        //   beginAtZero: true,
-        // },
+        ticks: {
+          callback: value => { return `${value}`; },
+        },
       },
     },
   };

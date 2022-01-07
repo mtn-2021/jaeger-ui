@@ -64,7 +64,7 @@ function submitForm(fields, fetchRequestToNode) {
   const start = lookbackToTimestamp(lb, now);
   const end = now * 1000 * 1000;
   store.set('lastNodeSearch', { node, service, start, lookback: lb });
-
+  console.log(start,end);
   fetchRequestToNode({
     node,
     service,
@@ -201,4 +201,4 @@ export default connect(
   reduxForm({
     form: 'nodesSideBar',
   })(NodeFormImpl)
-); // このあたりで default undefined
+);
