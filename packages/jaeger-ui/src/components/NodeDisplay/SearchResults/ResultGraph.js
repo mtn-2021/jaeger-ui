@@ -282,6 +282,9 @@ function ResultGraphImpl(props) {
         type: 'time',
         time: {
           parser: `${UnitKeeper[intervalUnit.unit].format}`,
+          displayFormats: {
+            quarter: 'YYYY MM/DD hh:mm a',
+          },
           // min: `${start / ONE_MILLISECOND}`,
           // max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         },
