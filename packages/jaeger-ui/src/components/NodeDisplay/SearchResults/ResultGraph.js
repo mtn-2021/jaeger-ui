@@ -277,7 +277,7 @@ function ResultGraphImpl(props) {
         display: true,
         min: `${start / ONE_MILLISECOND}`,
         max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
-        // type: 'time',
+        type: 'time',
         // time: {
         //   // unit: 'millisecond',
         //   parser: `${UnitKeeper[intervalUnit.unit].format}`,
