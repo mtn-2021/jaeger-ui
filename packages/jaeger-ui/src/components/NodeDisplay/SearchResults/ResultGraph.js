@@ -275,8 +275,6 @@ function ResultGraphImpl(props) {
       },
       xScat: {
         display: true,
-        min: `${start / ONE_MILLISECOND}`,
-        max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         type: 'time',
         time: {
           // unit: 'millisecond',
@@ -284,7 +282,8 @@ function ResultGraphImpl(props) {
         },
         ticks: {
           source: 'labels',
-
+          min: `${start / ONE_MILLISECOND}`,
+          max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         }
       },
       yBar: {
