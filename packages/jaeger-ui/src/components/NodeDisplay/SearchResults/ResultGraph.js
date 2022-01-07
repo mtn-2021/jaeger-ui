@@ -16,7 +16,7 @@ import React from 'react';
 // import dimensions from 'react-dimensions';
 // import moment from 'moment';
 import PropTypes from 'prop-types';
-import { Pie }  from 'react-chartjs-2';
+import { Bar }  from 'react-chartjs-2';
 // import { ONE_MILLISECOND } from '../../../utils/date';
 
 // function getUintTime(time) {
@@ -228,21 +228,18 @@ import { Pie }  from 'react-chartjs-2';
 
 export default function ResultGraphImpl(props) {
   const { request, status, lookback: lb, start, operationNames, statusKey, graphMenu } = props;
-  let lookback = '1h';
+  // let lookback = '1h';
   // let labels;
   // let datasets;
-  let xLabel;
-  let intervalUnit;
-  let minData;
-  let maxDataB;
-  let maxDataS;
-  xLabel = 'Last 1 hour';
-  intervalUnit = {unit: 'h'}; // structure.interval;
-  minData = 0;
-  maxDataB = 10;
-  maxDataS = 1;
+  // let xLabel= 'Last 1 hour';
+  // let intervalUnit;
+  // let minData = 0;
+  // let maxDataB = 10;
+  // let maxDataS = 1;
+  // intervalUnit = {unit: 'h'}; // structure.interval;
   console.log(lb,graphMenu,start,operationNames);
-  if ((status && status.length > 0) || (request && request.length > 0)) {
+  console.log(request, status, statusKey);
+  // if ((status && status.length > 0) || (request && request.length > 0)) {
     // lookback = lb;
     // const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
     // const statusData = getStatusPlot(status, statusKey);
@@ -253,8 +250,7 @@ export default function ResultGraphImpl(props) {
     // minData = 0;
     // maxDataB = structure.maxData;
     // maxDataS = statusData.maxData;
-  } else {
-    lookback = '1h';
+  // } else {
     // const structure = getLabelsAndData(
     //   lookback,
     //   new Date() * 1000 - getUintTime(lookback),
@@ -310,13 +306,9 @@ export default function ResultGraphImpl(props) {
     // };
     // labels = structure.labels;
     // datasets = [].concat(statusData.datasets).concat(structure.datasets);
-    xLabel = 'Last 1 hour';
-    intervalUnit = {unit: 'h'}; // structure.interval;
-    minData = 0;
-    maxDataB = 10;
-    maxDataS = 1;
-  }
-  console.log(lookback,xLabel,intervalUnit,minData,maxDataB,maxDataS,statusKey);
+    // intervalUnit = {unit: 'h'}; // structure.interval;
+  // }
+  // console.log(lookback,xLabel,intervalUnit,minData,maxDataB,maxDataS,statusKey);
   // console.log(labels,datasets);
   const graphData = {
     // labels,
@@ -419,12 +411,12 @@ export default function ResultGraphImpl(props) {
   // };
   // console.log(getUintTime(lookback));
   console.log(graphData);
-  console.log("switch");
+  // console.log("switch");
   // console.log(graphOption);
   // return (<div> <p2>hello world!!</p2></div>);
   return (
       <div>
-        <Pie data={graphData} />
+        <Bar data={graphData} />
       </div>
    ); // options={graphOption}
 }
