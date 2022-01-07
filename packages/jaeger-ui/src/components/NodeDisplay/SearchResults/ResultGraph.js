@@ -245,7 +245,6 @@ function ResultGraphImpl(props) {
     datasets = [].concat(statusData.datasets).concat(structure.datasets);
     xLabel = `Last ${parseInt(lookback, 10)} ${UnitKeeper[lookback.substr(-1)].full}`;
     intervalUnit = structure.interval;
-    minData = 0;
     maxDataB = structure.maxData;
     maxDataS = statusData.maxData;
   } else {
@@ -368,8 +367,8 @@ function ResultGraphImpl(props) {
       yBar: {
         position: 'left',
         stacked: true,
-        min: `${minData}`,
-        max: `${maxDataB}`,
+        min: `${Math.floor(minData)}`,
+        max: `${Math.floor(maxDataB)}`,
         title: {
           display: true,
           text: `Number of requests(/${intervalUnit.interval})`,
