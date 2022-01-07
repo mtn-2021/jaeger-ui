@@ -45,10 +45,8 @@ export class SearchResultImpl extends React.PureComponent {
   render() {
     const {  start, lookback, request, status, tableData, loading, statusKeys } = this.props;
     const { selectedKey, selectedMenu } = this.state;
-    console.log(start);
-    console.log(lookback);
-    console.log(request);
-    console.log(status);
+    console.log("request: ",request);
+    console.log("status: ",status);
     const columns = [
       {
         title: 'Operation Name',
@@ -163,7 +161,7 @@ export class SearchResultImpl extends React.PureComponent {
            />
         </div>
         <div className="SearchResults--tables">
-          <Table columns={columns} dataSource={data} />
+          <Table columns={columns} dataSource={data} pagination={false} />
         </div>
       </div>
     );

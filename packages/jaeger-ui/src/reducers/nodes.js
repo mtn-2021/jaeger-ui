@@ -83,6 +83,7 @@ function fetchRequestStarted(state, { meta }) {
 
 function fetchRequestDone(state, { payload }) {
   const { data } = payload;
+  console.log("nodes Done: ",payload);
   const { request, status } = data;
   const requestData = request.map(({ logs, operationName }) => {
     const startTime = getTimestamp(logs, 'startTime');

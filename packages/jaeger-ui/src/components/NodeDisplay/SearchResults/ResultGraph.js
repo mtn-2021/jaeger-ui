@@ -160,18 +160,6 @@ function getLabelsAndData(lookback, start, request, operationNames, graphMenu) {
 function getStatusPlot(status, yPlop) {
   const statusData = [];
   const missingData = [];
-   // statusData.push(
-   //     {
-   //       operationName: "test",
-   //       x: 164035633771,
-   //       y: 0.5,
-   //     });
-   // missingData.push(
-   //     {
-   //       operationName: "test2",
-   //       x: 164035640000,
-   //       y: 1,
-   //     });
   const statusFlag = yPlop === 'status';
   let maxData = -Infinity;
 
@@ -235,7 +223,7 @@ function ResultGraphImpl(props) {
   const minData = 0;
   let maxDataB = 10;
   let maxDataS = 1;
-  console.log(lb,graphMenu,start,operationNames);
+  console.log(lb,graphMenu,operationNames);
   console.log(request, status, statusKey);
   if ((status && status.length > 0) || (request && request.length > 0)) {
     lookback = lb;
@@ -255,87 +243,14 @@ function ResultGraphImpl(props) {
       operationNames,
       graphMenu
     );
-    // const structure = {
-    //   interval: {unit: 'h'},
-    //   labels: ["1","2","3","4","5"],
-    //   datasets: [
-    //       {
-    //         type: 'bar',
-    //         data: [1,2,3,4,5],
-    //         label: 'Number of request',
-    //         backgroundColor: 'rgba(30, 144, 255, 1)',
-    //         yAxisID: 'y-bar',
-    //         xAxisID: 'x-bar',
-    //       },
-    //   ]
-    // }
     const statusData = getStatusPlot(status, statusKey);
-    // const statusData = {
-    //   datasets: [{
-    //     type: 'scatter',
-    //     data: [{
-    //       operationName: "test",
-    //       x: 164035633771,
-    //       y: 0.5,},
-    //       {
-    //       operationName: "test2",
-    //       x: 164035640000,
-    //       y: 1,},
-    //     ],
-    //     label: statusKey,
-    //     backgroundColor: `rgba(117, 219, 219,1)`,
-    //     yAxisID: 'y-scat',
-    //     xAxisID: 'x-scat',
-    //   }, {
-    //     type: 'scatter',
-    //     data: [{
-    //       operationName: "test3",
-    //       x: 164035633771,
-    //       y: 0.25,}, {
-    //       operationName: "test4",
-    //       x: 164035640000,
-    //       y: 0,},],
-    //     label: 'disConnect',
-    //     backgroundColor: `rgba(255, 15, 43, 1)`,
-    //     yAxisID: 'y-scat',
-    //     xAxisID: 'x-scat',
-    //   },]
-    // };
     labels = structure.labels;
     datasets = [].concat(statusData.datasets).concat(structure.datasets);
     intervalUnit = structure.interval;
   }
-  console.log(lookback,xLabel,intervalUnit,minData,maxDataB,maxDataS,statusKey);
-  console.log(labels,datasets);
   const graphData = {
     labels,
     datasets,
-    // labels: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月'],
-    // datasets: [
-    //   {
-    //     label: 'Dataset',
-    //     data: [65, 59, 80, 81, 56, 55, 40],
-    //     backgroundColor: [
-    //       'rgba(255, 99, 132, 0.2)',
-    //       'rgba(255, 159, 64, 0.2)',
-    //       'rgba(255, 205, 86, 0.2)',
-    //       'rgba(75, 192, 192, 0.2)',
-    //       'rgba(54, 162, 235, 0.2)',
-    //       'rgba(153, 102, 255, 0.2)',
-    //       'rgba(201, 203, 207, 0.2)',
-    //     ],
-    //     borderColor: [
-    //       'rgb(255, 99, 132)',
-    //       'rgb(255, 159, 64)',
-    //       'rgb(255, 205, 86)',
-    //       'rgb(75, 192, 192)',
-    //       'rgb(54, 162, 235)',
-    //       'rgb(153, 102, 255)',
-    //       'rgb(201, 203, 207)',
-    //     ],
-    //     borderWidth: 1,
-    //   },
-    // ],
   };
   const graphOption = {
     plugins: {
