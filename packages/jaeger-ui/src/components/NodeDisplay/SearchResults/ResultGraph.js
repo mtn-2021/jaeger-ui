@@ -273,7 +273,7 @@ function ResultGraphImpl(props) {
         },
       },
       xScat: {
-        display: false,
+        display: true,
         min: start,
         max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
         // type: 'time',
