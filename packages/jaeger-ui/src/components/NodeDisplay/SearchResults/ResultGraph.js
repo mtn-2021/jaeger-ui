@@ -271,16 +271,13 @@ function ResultGraphImpl(props) {
         },
       },
       xScat: {
-        display: true,
+        display: false,
         min: start / ONE_MILLISECOND,
         max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
         type: 'time',
         time: {
           parser: `${UnitKeeper[intervalUnit.unit].format}`,
         },
-        ticks: {
-          source: 'labels',
-        }
       },
       yBar: {
         position: 'left',
@@ -303,9 +300,9 @@ function ResultGraphImpl(props) {
           display: true,
           text: `${statusKey}`,
         },
-        ticks: {
-          callback: value => { return `${value}`; },
-        },
+        // ticks: {
+        //   callback: value => { return `${value}`; },
+        // },
       },
     },
   };
