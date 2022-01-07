@@ -255,7 +255,6 @@ function ResultGraphImpl(props) {
     labels,
     datasets,
   };
-  console.log(graphData);
   const graphOption = {
     plugins: {
       legend: {
@@ -281,11 +280,10 @@ function ResultGraphImpl(props) {
         type: 'time',
         parsing: false,
         time: {
-          parsing: false,
-          // parser: `${UnitKeeper[intervalUnit.unit].format}`,
+          parser: `${UnitKeeper[intervalUnit.unit].format}`,
         },
         ticks: {
-          source: 'data',
+          source: 'labels',
         }
       },
       yBar: {
@@ -315,6 +313,7 @@ function ResultGraphImpl(props) {
       },
     },
   };
+  console.log(graphData,graphOption);
   return (
       <div>
         <Bar data={graphData} options={graphOption} />
