@@ -349,8 +349,10 @@ function ResultGraphImpl(props) {
       },
     },
     scales: {
-      xBar : {
-          stacked: true,
+      xAxes: [
+        {
+          id: 'xBar',
+          // stacked: true,
           scaleLabel: {
             labelString: xLabel,
           },
@@ -370,6 +372,7 @@ function ResultGraphImpl(props) {
         //     max: (start + getUintTime(lookback)) / ONE_MILLISECOND,
         //   },
         // },
+      ],
       yAxes: [
         {
           id: 'yBar',
