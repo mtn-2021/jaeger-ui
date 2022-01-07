@@ -224,9 +224,6 @@ function ResultGraphImpl(props) {
   const minData = 0;
   let maxDataB = 10;
   let maxDataS = 1;
-  // console.log(lb,graphMenu,operationNames);
-  // console.log(request, status, statusKey);
-  console.log(start);
   if ((status && status.length > 0) || (request && request.length > 0)) {
     lookback = lb;
     const structure = getLabelsAndData(lookback, start, request, operationNames, graphMenu);
@@ -279,17 +276,17 @@ function ResultGraphImpl(props) {
         max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         // suggestedMin: `${start / ONE_MILLISECOND}`,
         // suggestedMax: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
-        type: 'time',
+        // type: 'time',
         // time: {
           // parser: `${UnitKeeper[intervalUnit.unit].format}`,
           // min: `${start / ONE_MILLISECOND}`,
           // max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
         // },
-        ticks: {
-          source: 'data',
-        //   // min: `${start / ONE_MILLISECOND}`,
-        //   // max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
-        }
+        // ticks: {
+        //   source: 'data',
+        //   min: `${start / ONE_MILLISECOND}`,
+        //   max: `${(start + getUintTime(lookback)) / ONE_MILLISECOND}`,
+        // }
       },
       yBar: {
         position: 'left',
