@@ -300,7 +300,6 @@ function ResultGraphImpl(props) {
       },
     },
   };
-  console.log(graphData,graphOption);
   return (
       <div>
         <Bar data={graphData} options={graphOption} />

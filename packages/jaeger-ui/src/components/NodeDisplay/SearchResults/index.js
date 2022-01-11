@@ -45,8 +45,6 @@ export class SearchResultImpl extends React.PureComponent {
   render() {
     const {  start, lookback, request, status, tableData, loading, statusKeys } = this.props;
     const { selectedKey, selectedMenu } = this.state;
-    console.log("request: ",request);
-    console.log("status: ",status);
     const columns = [
       {
         title: 'Operation Name',
