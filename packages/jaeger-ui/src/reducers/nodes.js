@@ -38,6 +38,15 @@ function getTimestamp(logs, key) {
   return -1;
 }
 
+function getTimestampByValue(logs, value) {
+  const log = logs.find(({ fields }) => fields[0].value === value);
+  if (log) {
+    const { timestamp } = log;
+    return timestamp;
+  }
+  return -1;
+}
+
 function getStatus(logs) {
   const log = logs.find(({ fields }) => fields[0].key === 'nodeStatus');
   const { fields } = log;
@@ -86,8 +95,8 @@ function fetchRequestDone(state, { payload }) {
   console.log(data);
   const { request, status } = data;
   const requestData = request.map(({ logs, operationName }) => {
-    const startTime = getTimestamp(logs, 'startTime');
-    const finishTime = getTimestamp(logs, 'finishTime');
+    const startTime = getTimestampByValue(logs, 'requestStart');
+    const finishTime = getTimestampByValue(logs, 'requestFinish');
     let failed = null;
     if (finishTime === -1) {
       failed = getTimestamp(logs, 'error');
