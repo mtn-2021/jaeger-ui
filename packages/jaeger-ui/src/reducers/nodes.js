@@ -92,7 +92,6 @@ function fetchRequestStarted(state, { meta }) {
 
 function fetchRequestDone(state, { payload }) {
   const { data } = payload;
-  console.log(data);
   const { request, status } = data;
   const requestData = request.map(({ logs, operationName }) => {
     const startTime = getTimestampByValue(logs, 'requestStart');
@@ -107,6 +106,9 @@ function fetchRequestDone(state, { payload }) {
       responseTime: finishTime - startTime,
       failed,
     };
+  });
+  requestData.sort(function(a,b){
+    return a.startTime < b.startTime ? 1 : -1;
   });
 
   const timestamps = [];
